@@ -35,7 +35,6 @@ public class HomeController {
 		
 		return "home";
 	}
-	
 	@RequestMapping(value = "/uploadboard", method = RequestMethod.GET)
 	public void uploadboard() {
 		

@@ -144,7 +144,16 @@
   letter-spacing: .15rem;
   border: 0;
 }
-
+.bg-img {
+	  position: relative;
+  	width: 100%;
+  min-height: 35rem;
+  background: linear-gradient(to bottom, rgba(22, 22, 22, 0.3) 0%, rgba(22, 22, 22, 0.7) 75%, #161616 100%), url("../img/backimg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
 .btn-primary {
   background-color: #64a19d;
 }
