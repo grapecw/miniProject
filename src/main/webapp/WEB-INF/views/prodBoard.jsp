@@ -332,7 +332,7 @@ h2 a {
 		</div>
 	</nav>
 
-	<section class="bg-light page-section" id="portfolio">
+	<section class="page-section" id="portfolio">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
@@ -349,7 +349,7 @@ h2 a {
 							<div class="portfolio-hover-content">
 								<i class="fas fa-plus fa-3x"></i>
 							</div>
-						</div> <img class="img-fluid" src="img/portfolio/01-thumbnail.jpg"
+						</div> <img class="img-fluid" src="/miniproject/resources/img/portfolio/01-thumbnail.jpg"
 						alt="">
 					</a>
 					<div class="portfolio-caption">
@@ -364,7 +364,7 @@ h2 a {
 							<div class="portfolio-hover-content">
 								<i class="fas fa-plus fa-3x"></i>
 							</div>
-						</div> <img class="img-fluid" src="img/portfolio/02-thumbnail.jpg"
+						</div> <img class="img-fluid" src="/miniproject/resources/img/portfolio/02-thumbnail.jpg"
 						alt="">
 					</a>
 					<div class="portfolio-caption">
@@ -379,7 +379,7 @@ h2 a {
 							<div class="portfolio-hover-content">
 								<i class="fas fa-plus fa-3x"></i>
 							</div>
-						</div> <img class="img-fluid" src="img/portfolio/03-thumbnail.jpg"
+						</div> <img class="img-fluid" src="/miniproject/resources/img/portfolio/03-thumbnail.jpg"
 						alt="">
 					</a>
 					<div class="portfolio-caption">
@@ -394,7 +394,7 @@ h2 a {
 							<div class="portfolio-hover-content">
 								<i class="fas fa-plus fa-3x"></i>
 							</div>
-						</div> <img class="img-fluid" src="img/portfolio/04-thumbnail.jpg"
+						</div> <img class="img-fluid" src="/miniproject/resources/img/portfolio/04-thumbnail.jpg"
 						alt="">
 					</a>
 					<div class="portfolio-caption">
@@ -409,7 +409,7 @@ h2 a {
 							<div class="portfolio-hover-content">
 								<i class="fas fa-plus fa-3x"></i>
 							</div>
-						</div> <img class="img-fluid" src="img/portfolio/05-thumbnail.jpg"
+						</div> <img class="img-fluid" src="/miniproject/resources/img/portfolio/05-thumbnail.jpg"
 						alt="">
 					</a>
 					<div class="portfolio-caption">
@@ -424,7 +424,7 @@ h2 a {
 							<div class="portfolio-hover-content">
 								<i class="fas fa-plus fa-3x"></i>
 							</div>
-						</div> <img class="img-fluid" src="img/portfolio/06-thumbnail.jpg"
+						</div> <img class="img-fluid" src="/miniproject/resources/img/portfolio/06-thumbnail.jpg"
 						alt="">
 					</a>
 					<div class="portfolio-caption">
@@ -460,7 +460,7 @@ h2 a {
 								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
 									consectetur.</p>
 								<img class="img-fluid d-block mx-auto"
-									src="img/portfolio/01-full.jpg" alt="">
+									src="/miniproject/resources/img/portfolio/01-full.jpg" alt="">
 								<p>Use this area to describe your project. Lorem ipsum dolor
 									sit amet, consectetur adipisicing elit. Est blanditiis dolorem
 									culpa incidunt minus dignissimos deserunt repellat aperiam
@@ -502,7 +502,7 @@ h2 a {
 								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
 									consectetur.</p>
 								<img class="img-fluid d-block mx-auto"
-									src="img/portfolio/02-full.jpg" alt="">
+									src="/miniproject/resources/img/portfolio/02-full.jpg" alt="">
 								<p>Use this area to describe your project. Lorem ipsum dolor
 									sit amet, consectetur adipisicing elit. Est blanditiis dolorem
 									culpa incidunt minus dignissimos deserunt repellat aperiam
@@ -544,7 +544,7 @@ h2 a {
 								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
 									consectetur.</p>
 								<img class="img-fluid d-block mx-auto"
-									src="img/portfolio/03-full.jpg" alt="">
+									src="/miniproject/resources/img/portfolio/03-full.jpg" alt="">
 								<p>Use this area to describe your project. Lorem ipsum dolor
 									sit amet, consectetur adipisicing elit. Est blanditiis dolorem
 									culpa incidunt minus dignissimos deserunt repellat aperiam
@@ -586,7 +586,7 @@ h2 a {
 								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
 									consectetur.</p>
 								<img class="img-fluid d-block mx-auto"
-									src="img/portfolio/04-full.jpg" alt="">
+									src="/miniproject/resources/img/portfolio/04-full.jpg" alt="">
 								<p>Use this area to describe your project. Lorem ipsum dolor
 									sit amet, consectetur adipisicing elit. Est blanditiis dolorem
 									culpa incidunt minus dignissimos deserunt repellat aperiam
@@ -628,7 +628,7 @@ h2 a {
 								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
 									consectetur.</p>
 								<img class="img-fluid d-block mx-auto"
-									src="img/portfolio/05-full.jpg" alt="">
+									src="/miniproject/resources/img/portfolio/05-full.jpg" alt="">
 								<p>Use this area to describe your project. Lorem ipsum dolor
 									sit amet, consectetur adipisicing elit. Est blanditiis dolorem
 									culpa incidunt minus dignissimos deserunt repellat aperiam
@@ -670,7 +670,7 @@ h2 a {
 								<p class="item-intro text-muted">Lorem ipsum dolor sit amet
 									consectetur.</p>
 								<img class="img-fluid d-block mx-auto"
-									src="img/portfolio/06-full.jpg" alt="">
+									src="/miniproject/resources/img/portfolio/06-full.jpg" alt="">
 								<p>Use this area to describe your project. Lorem ipsum dolor
 									sit amet, consectetur adipisicing elit. Est blanditiis dolorem
 									culpa incidunt minus dignissimos deserunt repellat aperiam
