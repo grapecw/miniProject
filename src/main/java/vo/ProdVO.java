@@ -1,6 +1,6 @@
 package vo;
 
-public class prodVO {
+public class ProdVO {
 	private String prodID;
 	private String manufacturer;
 	private String PType;

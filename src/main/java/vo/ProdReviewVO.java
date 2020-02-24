@@ -1,6 +1,6 @@
 package vo;
 
-public class ProdReview {
+public class ProdReviewVO {
 	private int reViewID;
 	private int IDCord;
 	private String NickName;
