@@ -15,7 +15,14 @@ public class ProdReviewVO {
 	private int ViewStar;
 	private int ViewPoice;
 	
+	ProdReviewVO () {
+		IDCord=1111;
+		IDEmail="111";
+		prodID="11111";
+	}
+	
 	public int getReViewID() {
+		
 		return reViewID;
 	}
 	public void setReViewID(int reViewID) {

@@ -49,8 +49,6 @@
 	
 	<context:component-scan base-package="my.spring.miniproject" />
 	
-		<context:component-scan
-		base-package="my.spring.springedu" />
 	<context:component-scan base-package="dao" /> 
 	<context:component-scan base-package="service" />
 	

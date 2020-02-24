@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="resource.prodReviewMapper">
+	
+ 	<select id="selectReview"  resultType="vo.ProdReviewVO" parameterType="_int">
+ 		select reViewID, IDCord, NickName, IDEmail, prodID, viewTitle, ViewDate, ViewContenxt, Viewcnt, ViewUpCnt, ViewImg, ViewStar, ViewPoice
+		from prodReview
+		where reViewID=#{id}
+ 	</select>
+ 	
+ 	<insert id="insertReview" parameterType="vo.ProdReviewVO">
+
+	<selectKey keyProperty="reViewID" order="BEFORE" resultType="int">
+		SELECT prodreview_SEQ.NEXTVAL FROM DUAL
+	</selectKey>
+	insert into prodReview 
+		(reViewID, IDCord, NickName, IDEmail, prodID, viewTitle, ViewDate, ViewContenxt, Viewcnt, ViewUpCnt, ViewImg, ViewStar, ViewPoice) 
+	values 
+		(#{reViewID}, #{IDCord}, #{NickName}, #{IDEmail}, #{prodID}, #{viewTitle}, #{ViewDate}, #{ViewContenxt}, #{Viewcnt}, #{ViewUpCnt}, #{ViewImg}, #{ViewStar}, #{ViewPoice})
+	</insert>
+ 	
+ 	<!--
+ 	
+ 	<select id="selectOneNews" resultType="vo.ProdReviewVO" parameterType="_int" >
+ 		select id, writer, title, content, to_char(writedate,'yyyy"년" mm"월" dd"일"') AS "writedate", cnt from news where id = #{id}
+	</select>
+	
+  	<insert id="insertNews" parameterType="vo.ProdReviewVO">
+		<selectKey resultType="int" keyProperty="id" order="BEFORE">
+			select news_seq.nextval from dual
+ 		</selectKey>
+		insert into news values (#{id}, #{writer}, #{title}, #{content}, sysdate, 0)
+	</insert>
+	
+	<select id="searchTitleNews" parameterType="string" resultType= "vo.ProdReviewVO">
+    	select id, writer, title, content, to_char(writedate,'yyyy"년" mm"월" dd"일"') AS "writedate", cnt
+		from news
+    	where title like '%'||#{key}||'%'
+    </select>
+    
+    <select id="searchWriterNews" parameterType="string" resultType= "vo.ProdReviewVO">
+    	select id, writer, title, content, to_char(writedate,'yyyy"년" mm"월" dd"일"') AS "writedate", cnt
+		from news
+    	where writer like '%'||#{key}||'%'
+    </select>
+    
+    <delete id="deleteNews" parameterType="_int" >
+ 		delete from news where id = #{id}
+	</delete>
+	
+	<update id="updateNews" parameterType="vo.ProdReviewVO" >
+		update news
+		set writer = #{writer}, title = #{title}, content = #{content}
+		where id = #{id}
+	</update>
+	
+	<update id="updateViews" parameterType="vo.ProdReviewVO" >
+		update news
+		set cnt = #{cnt}
+		where id = #{id}
+	</update>
+	
+	<select id="selectTotalNewsNum" resultType="Integer">
+ 		SELECT count(id) from news
+	</select>
+	 -->
+</mapper>
+
+
+
+
+
+
+
+

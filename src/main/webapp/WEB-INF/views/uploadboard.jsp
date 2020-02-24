@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"
+	import="java.util.List, java.util.ArrayList,vo.ProdReviewVO"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +33,8 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/lightbox.css"
 	rel="stylesheet" />
+	
+
 <style>
 .prodimg {
 	transform: scale(1);
@@ -321,6 +324,15 @@ h2 a {
 	<section id="projects" class="projects-section">
 		<article
 			style="text-align: center; vertical-align: middle; width: 80%; margin: auto; color: black">
+			
+			<%
+			ProdReviewVO posting = (ProdReviewVO)request.getAttribute("posting");
+			%>
+			
+			<%= posting.getViewTitle() %>
+			
+			<hr>
+			
 			<div id="imgarea">
 				<a href="/test/resources/img/1.png" data-lightbox="image-1"
 					data-title="My caption"><img class="prodimg"
@@ -379,6 +391,7 @@ h2 a {
 			</div>
 
 			<div>
+			<!--
 				<table id="prodboard">
 					<thead>
 						<tr>
@@ -401,6 +414,7 @@ h2 a {
 
 					</tbody>
 				</table>
+			-->
 			</div>
 		</article>
 	</section>

@@ -461,7 +461,7 @@ h2 a {
 									consectetur.</p>
 								<img class="img-fluid d-block mx-auto"
 									src="/miniproject/resources/img/portfolio/01-full.jpg" alt="">
-								<p>Use this area to describe your project. Lorem ipsum dolor
+								<p>Use this area to describe your project. <br>Lorem ipsum dolor
 									sit amet, consectetur adipisicing elit. Est blanditiis dolorem
 									culpa incidunt minus dignissimos deserunt repellat aperiam
 									quasi sunt officia expedita beatae cupiditate, maiores
@@ -475,6 +475,11 @@ h2 a {
 									type="button">
 									<i class="fas fa-times"></i> Close Project
 								</button>
+								
+								<table>
+									
+								
+								</table>
 							</div>
 						</div>
 					</div>
