@@ -20,7 +20,8 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 <!-- include summernote-ko-KR -->
-<script src="${pageContext.request.contextPath}/resources/js/summernote-ko-KR.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/summernote-ko-KR.js"></script>
 <title>글쓰기</title>
 
 <script>
@@ -30,7 +31,15 @@
 			minHeight : 370,
 			maxHeight : null,
 			focus : true,
-			lang : 'ko-KR'
+			lang : 'ko-KR',
+			callbacks : {
+				onImageUpload : function(files, editor, welEditable) {
+					for (var i = files.length - 1; i >= 0; i--) {
+						sendFile(files[i], this);
+					}
+				}
+			}
+
 		});
 	});
 </script>
@@ -44,10 +53,8 @@
 	<div style="width: 60%; margin: auto;">
 		<form method="post" action="/miniproject/write1">
 			<input type="text" name="NickName" style="width: 20%;"
-				placeholder="작성자" /><br> 
-		<input type="text" name="viewTitle"
-				style="width: 40%;" placeholder="제목" /> <br>
-			<br>
+				placeholder="작성자" /><br> <input type="text" name="viewTitle"
+				style="width: 40%;" placeholder="제목" /> <br> <br>
 			<textarea id="summernote" name="ViewContenxt"></textarea>
 			<input id="subBtn" type="button" value="글 작성" style="float: right;"
 				onclick="goWrite(this.form)" />
@@ -74,6 +81,23 @@
 			}
 			frm.submit();
 		}
+		function sendFile(file, el) {
+		      var form_data = new FormData();
+		      form_data.append('file', file);
+		      $.ajax({
+		        data: form_data,
+		        type: "POST",
+		        url: '/miniproject/prodimg',
+		        cache: false,
+		        contentType: false,
+		        enctype: 'multipart/form-data',
+		        processData: false,
+		        success: function(url) {
+		          $(el).summernote('editor.insertImage', url);
+		          $('#imageBoard > ul').append('<li><img src="'+url+'" width="480" height="auto"/></li>');
+		        }
+		      });
+		    }
 	</script>
 
 </body>
