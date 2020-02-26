@@ -75,9 +75,9 @@ public class HomeController {
 		ModelAndView mav = new ModelAndView();
 //		boolean result = dao.insert(vo);
 //		if (result)
-//			System.out.println("삽입 성공");
+//			System.out.println("�궫�엯 �꽦怨�");
 //		else
-//			System.out.println("삽입 실패");
+//			System.out.println("�궫�엯 �떎�뙣");
 //
 ////		mav.addObject("list", listAll());
 		mav.setViewName("uploadboard");
@@ -104,29 +104,32 @@ public class HomeController {
 	
 	@RequestMapping("/image")
 	public ModelAndView saveFile(MultipartRequest mreq) {
+		System.out.println("들어왔니?");
 		ModelAndView mav = new ModelAndView();
-		List<MultipartFile> list = mreq.getFiles("mfile");
+		List<MultipartFile> list = mreq.getFiles("file");
 		String resultStr = "";
 		mav.setViewName("boardWrite");
+		System.out.println("여긴 옴??");
 		for (MultipartFile mfile : list) {
+			System.out.println("여기는??");
 			String fileName = mfile.getOriginalFilename();
 			try {
 				System.out.println(context.getRealPath("/"));
 				String fileInfo = context.getRealPath("/") + "resources/img/"+fileName;
-				// context.getRealPath 컨드롤러, 즉 이 프로젝트의 최상히 폴더를 추출하는 문장
-				// 특정 위치에 올리면 클라이언트가 접근을 하지 못한, 그러니까 클라이언트가 접근 가능한 폴더인 resources에 올리기 위해서
+				// context.getRealPath 而⑤뱶濡ㅻ윭, 利� �씠 �봽濡쒖젥�듃�쓽 理쒖긽�엳 �뤃�뜑瑜� 異붿텧�븯�뒗 臾몄옣
+				// �듅�젙 �쐞移섏뿉 �삱由щ㈃ �겢�씪�씠�뼵�듃媛� �젒洹쇱쓣 �븯吏� 紐삵븳, 洹몃윭�땲源� �겢�씪�씠�뼵�듃媛� �젒洹� 媛��뒫�븳 �뤃�뜑�씤 resources�뿉 �삱由ш린 �쐞�빐�꽌
 				File f = new File(fileInfo);
 				System.out.println(fileInfo);
 				if (f.exists()) {
 					
-					resultStr += fileName + " : 파일이 이미 존재해요!!<br>";
+					resultStr += fileName + " : �뙆�씪�씠 �씠誘� 議댁옱�빐�슂!!<br>";
 				} else {
 					mfile.transferTo(new File(fileInfo));
-					resultStr += fileName + " : 파일이 저장되었어요!!<br>";
+					resultStr += fileName + " : �뙆�씪�씠 ���옣�릺�뿀�뼱�슂!!<br>";
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
-				resultStr += fileName + " : 오류가 발생했어요!!";				
+				resultStr += fileName + " : �삤瑜섍� 諛쒖깮�뻽�뼱�슂!!";				
 			}
 		}
 		mav.addObject("msg", resultStr);	
