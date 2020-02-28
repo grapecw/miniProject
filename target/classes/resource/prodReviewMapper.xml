@@ -5,16 +5,24 @@
 <mapper namespace="resource.prodReviewMapper">
 	
  	<select id="selectReview"  resultType="vo.ProdReviewVO" parameterType="_int">
- 		select reViewID, IDCord, NickName, IDEmail, prodID, viewTitle, ViewDate, ViewContenxt, Viewcnt, ViewUpCnt, ViewImg, ViewStar, ViewPoice
+ 		select reViewID, IDCord, NickName, IDEmail, prodID, viewTitle, to_char(ViewDate,'yyyy"년" mm"월" dd"일"') AS ViewDate, ViewContenxt, Viewcnt, ViewUpCnt, ViewImg, ViewStar, ViewPoice
 		from prodReview
 		where reViewID=#{id}
  	</select>
  	
+ 	<!--  
+ 	<select id="selectReview"  resultType="vo.ProdReviewVO" parameterType="_int">
+ 		select reViewID, NickName, viewTitle, to_char(ViewDate,'yyyy"년" mm"월" dd"일"') AS ViewDate, Viewcnt, ViewUpCnt, ViewStar
+		from (reViewID, NickName, viewTitle, ViewDate, Viewcnt, ViewUpCnt, ViewStar) 
+		where rnum between  1+10*#{pagenum} and 10+10*#{pagenum} AND prodID=#{prodID}
+ 	</select>
+ 	-->
+ 	
  	<insert id="insertReview" parameterType="vo.ProdReviewVO">
-
 	<selectKey keyProperty="reViewID" order="BEFORE" resultType="int">
 		SELECT prodreview_SEQ.NEXTVAL FROM DUAL
 	</selectKey>
+	
 	insert into prodReview 
 		(reViewID, IDCord, NickName, IDEmail, prodID, viewTitle, ViewDate, ViewContenxt, Viewcnt, ViewUpCnt, ViewImg, ViewStar, ViewPoice) 
 	values 

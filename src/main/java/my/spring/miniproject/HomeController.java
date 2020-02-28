@@ -68,7 +68,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public String boardWrite() {
-	  return "index";
+	  return "boardWrite";
 	}
 	@RequestMapping(value = "/write1", method = RequestMethod.POST)
 	public ModelAndView upboardWrite(ProdReviewVO vo) {

@@ -6,9 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <!-- include libraries(jQuery, bootstrap) -->
-<link
-	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
-	rel="stylesheet">
+  <!-- core CSS -->
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 <script
@@ -24,11 +23,22 @@
 	src="${pageContext.request.contextPath}/resources/js/summernote-ko-KR.js"></script>
 <title>글쓰기</title>
 
+<%@include file="./grayscale.jsp"%>
+
+<style type="text/css">
+
+*{
+	font-size : 1.25rem;
+	font-family: Nunito;
+}
+</style>
+
 <script>
 	$(document).ready(function() {
 		$('#summernote').summernote({
 			placeholder : 'content',
-			minHeight : 370,
+			height : 300,
+			minHeight : null,
 			maxHeight : null,
 			focus : true,
 			lang : 'ko-KR',
@@ -43,18 +53,20 @@
 		});
 	});
 </script>
+<%@include file="./navbar.jsp"%>
 </head>
-<body>
-	<h2 style="text-align: center;">글 작성</h2>
+<body id="page-top" class="masthead">
+	
 	<br>
 	<br>
 	<br>
 
+
+
 	<div style="width: 60%; margin: auto;">
-		<form method="post" action="/miniproject/write1">
-			<input type="text" name="NickName" style="width: 20%;"
-				placeholder="작성자" /><br> <input type="text" name="viewTitle"
-				style="width: 40%;" placeholder="제목" /> <br> <br>
+		<form method="post" action="/miniproject/write1" id="summernote_item">
+			<input type="text" name="viewTitle" class="form-control" id="subject"
+				placeholder="제목" required/> <br>
 			<textarea id="summernote" name="ViewContenxt"></textarea>
 			<input id="subBtn" type="button" value="글 작성" style="float: right;"
 				onclick="goWrite(this.form)" />
@@ -71,10 +83,6 @@
 				alert("제목을 입력해주세요");
 				return false;
 			}
-			if (writer.trim() == '') {
-				alert("작성자를 입력해주세요");
-				return false;
-			}
 			if (content.trim() == '') {
 				alert("내용을 입력해주세요");
 				return false;
@@ -82,22 +90,25 @@
 			frm.submit();
 		}
 		function sendFile(file, el) {
-		      var form_data = new FormData();
-		      form_data.append('file', file);
-		      $.ajax({
-		        data: form_data,
-		        type: "POST",
-		        url: '/miniproject/prodimg',
-		        cache: false,
-		        contentType: false,
-		        enctype: 'multipart/form-data',
-		        processData: false,
-		        success: function(url) {
-		          $(el).summernote('editor.insertImage', url);
-		          $('#imageBoard > ul').append('<li><img src="'+url+'" width="480" height="auto"/></li>');
-		        }
-		      });
-		    }
+			var form_data = new FormData();
+			form_data.append('file', file);
+			$
+					.ajax({
+						data : form_data,
+						type : "POST",
+						url : '/miniproject/image ',
+						cache : false,
+						contentType : false,
+						enctype : 'multipart/form-data',
+						processData : false,
+						success : function(url) {
+							$(el).summernote('editor.insertImage', url);
+							$('#imageBoard > ul')
+									.append(
+											'<li><img src="'+url+'" width="480" height="auto"/></li>');
+						}
+					});
+		}
 	</script>
 
 </body>

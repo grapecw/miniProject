@@ -6,6 +6,7 @@
 
 <head>
 <title>mini project</title>
+<%@include file="./grayscale.jsp"%>
 </head>
 
 <body id="page-top">

@@ -283,10 +283,9 @@
 }
 
 body {
-	font-family: 'Nunito';
 	letter-spacing: 0.0625em;
 	
-		position: relative;
+	position: relative;
 	width: 100%;
 	min-height: 35rem;
 	background: linear-gradient(to bottom, rgba(22, 22, 22, 0.3) 0%,
