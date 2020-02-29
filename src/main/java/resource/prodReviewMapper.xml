@@ -10,27 +10,47 @@
 		where reViewID=#{id}
  	</select>
  	
+ 	<!-- 물품에 들어가면 그 물품에 대한 리뷰의 갯수 출력 -->
  	<!--  
- 	<select id="selectReview"  resultType="vo.ProdReviewVO" parameterType="_int">
+ 	<select id="selectReviewList"  resultType="vo.ProdReviewVO" parameterType="_int">
  		select reViewID, NickName, viewTitle, to_char(ViewDate,'yyyy"년" mm"월" dd"일"') AS ViewDate, Viewcnt, ViewUpCnt, ViewStar
 		from (reViewID, NickName, viewTitle, ViewDate, Viewcnt, ViewUpCnt, ViewStar) 
 		where rnum between  1+10*#{pagenum} and 10+10*#{pagenum} AND prodID=#{prodID}
  	</select>
  	-->
  	
+ 	<!-- 그 물품에 대한 리뷰를 작성 하는 부분 -->
  	<insert id="insertReview" parameterType="vo.ProdReviewVO">
-	<selectKey keyProperty="reViewID" order="BEFORE" resultType="int">
-		SELECT prodreview_SEQ.NEXTVAL FROM DUAL
-	</selectKey>
-	
-	insert into prodReview 
-		(reViewID, IDCord, NickName, IDEmail, prodID, viewTitle, ViewDate, ViewContenxt, Viewcnt, ViewUpCnt, ViewImg, ViewStar, ViewPoice) 
-	values 
-		(#{reViewID}, #{IDCord}, #{NickName}, #{IDEmail}, #{prodID}, #{viewTitle}, #{ViewDate}, #{ViewContenxt}, #{Viewcnt}, #{ViewUpCnt}, #{ViewImg}, #{ViewStar}, #{ViewPoice})
+		<selectKey keyProperty="reViewID" order="BEFORE" resultType="int">
+			SELECT prodreview_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		insert into prodReview 
+			(reViewID, IDCord, NickName, IDEmail, prodID, viewTitle, ViewDate, ViewContenxt, Viewcnt, ViewUpCnt, ViewImg, ViewStar, ViewPoice) 
+		values 
+			(#{reViewID}, #{IDCord}, #{NickName}, #{IDEmail}, #{prodID}, #{viewTitle}, #{ViewDate}, #{ViewContenxt}, #{Viewcnt}, #{ViewUpCnt}, #{ViewImg}, #{ViewStar}, #{ViewPoice})
 	</insert>
  	
- 	<!--
+ 	<!-- 리뷰를 삭제하는 부분 -->
+ 	<!-- 
+ 	<delete id="deleteReview" parameterType="_int" >
+ 		delete from prodReview
+ 		where reViewID=#{id}
+	</delete>
+	 -->
+	
+	<!-- 리뷰 수정 -->
+	<!-- 
+	<update id="updateReview" parameterType="vo.ProdReviewVO" >
+		update prodReview
+		set viewTitle = #{viewTitle}, ViewContenxt = #{ViewContenxt}
+		where reViewID=#{reViewID}
+	</update>
+ 	-->
  	
+ 	
+ 	
+ 	
+ 	<!--
  	<select id="selectOneNews" resultType="vo.ProdReviewVO" parameterType="_int" >
  		select id, writer, title, content, to_char(writedate,'yyyy"년" mm"월" dd"일"') AS "writedate", cnt from news where id = #{id}
 	</select>
