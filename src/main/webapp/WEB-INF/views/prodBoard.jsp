@@ -291,6 +291,52 @@ h2 a {
 	color: #444;
 	text-shadow: 0 1px 0 #fff;
 }
+table#miyazaki { 
+  margin: 0 auto;
+  border-collapse: collapse;
+  font-family: Agenda-Light, sans-serif;
+  font-weight: 100; 
+  background: #333; color: #fff;
+  text-rendering: optimizeLegibility;
+  border-radius: 5px; 
+}
+table#miyazaki caption { 
+  font-size: 2rem; color: #444;
+  margin: 1rem;
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/miyazaki.png), url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/miyazaki2.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center left, center right; 
+}
+table#miyazaki thead th { font-weight: 600; }
+table#miyazaki thead th, table#miyazaki tbody td { 
+  padding: .8rem; font-size: 1.4rem;
+}
+table#miyazaki tbody td { 
+  padding: .8rem; font-size: 1.4rem;
+  color: #444; background: #eee; 
+}
+table#miyazaki tbody tr:not(:last-child) { 
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;  
+}
+
+@media screen and (max-width: 600px) {
+  table#miyazaki caption { background-image: none; }
+  table#miyazaki thead { display: none; }
+  table#miyazaki tbody td { 
+    display: block; padding: .6rem; 
+  }
+  table#miyazaki tbody tr td:first-child { 
+    background: #666; color: #fff; 
+  }
+    table#miyazaki tbody td:before { 
+    content: attr(data-th); 
+    font-weight: bold;
+    display: inline-block;
+    width: 6rem;  
+  }
+}
 </style>
 
 </head>
@@ -343,10 +389,12 @@ h2 a {
 			</div>
 			<div class="row">
 				<div class="col-md-4 col-sm-6 portfolio-item">
+				<!-- 링크 거는 부분 -->
 					<a class="portfolio-link" data-toggle="modal"
 						href="#portfolioModal1">
 						<div class="portfolio-hover">
 							<div class="portfolio-hover-content">
+								<p> 세부 정보 </p>
 								<i class="fas fa-plus fa-3x"></i>
 							</div>
 						</div> <img class="img-fluid" src="/miniproject/resources/img/portfolio/01-thumbnail.jpg"
@@ -461,6 +509,16 @@ h2 a {
 									consectetur.</p>
 								<img class="img-fluid d-block mx-auto"
 									src="/miniproject/resources/img/portfolio/01-full.jpg" alt="">
+								<br>
+								<table id="miyazaki">
+								<thead>
+								<tr><th>제품<th>사양
+								<tbody>
+								<tr>
+								<td>메모리
+								<td>ㅁㅁㅁㅁㅁ<br>aaaaaa
+								<tr>
+								</table>
 								<p>Use this area to describe your project. <br>Lorem ipsum dolor
 									sit amet, consectetur adipisicing elit. Est blanditiis dolorem
 									culpa incidunt minus dignissimos deserunt repellat aperiam
@@ -719,6 +777,22 @@ h2 a {
 	<script src="<c:url value="/resources/js/lightbox.js" />"></script>
 	<script src="<c:url value="/resources/js/grayscale.js" />"></script>
 	<script src="<c:url value="/resources/js/agency.js" />"></script>
+	<script>
+	var headertext = [],
+	headers = document.querySelectorAll("#miyazaki th"),
+	tablerows = document.querySelectorAll("#miyazaki th"),
+	tablebody = document.querySelector("#miyazaki tbody");
+
+	for(var i = 0; i < headers.length; i++) {
+	  var current = headers[i];
+	  headertext.push(current.textContent.replace(/\r?\n|\r/,""));
+	} 
+	for (var i = 0, row; row = tablebody.rows[i]; i++) {
+	  for (var j = 0, col; col = row.cells[j]; j++) {
+	    col.setAttribute("data-th", headertext[j]);
+	  } 
+	}
+	</script>
 
 </body>
 </html>
