@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="resource.prodReviewMapper">
+	
+ 	<select id="selectOneProd" resultType="vo.ProdVO" parameterType="_int" >
+ 		select prodID, manufacturer, PType,PName,PImg,PPlain,Pspec1,Pspec2,Pspec3,Pspec4,Pspec5,Pspec6,Pspec7,Pspec8,Pspec9,Pspec10,Pspec11,Pspec12,Pspec13
+		from prod
+		where prodID = #{prodID}
+	</select>
+	
+	<select id="selectAllProd" resultType="vo.ProdVO" parameterType="string">
+ 		select prodID, manufacturer, PType,PName,PImg,PPlain,Pspec1,Pspec2,Pspec3,Pspec4,Pspec5,Pspec6,Pspec7,Pspec8,Pspec9,Pspec10,Pspec11,Pspec12,Pspec13
+		from prod
+		where manufacturer = #{manufacturer}
+	</select>
+	
+	<insert id="insertProd" parameterType="vo.ProdVO">
+		<selectKey resultType="int" keyProperty="prodID" order="BEFORE">
+			select prod_seq.nextval from dual
+ 		</selectKey>
+		insert into prod values (#{prodID}, #{manufacturer}, #{PType,PName}, #{PImg},#{PPlain},#{Pspec1},#{Pspec2},#{Pspec3},#{Pspec4},#{Pspec5},#{Pspec6},#{Pspec7},#{Pspec8},#{Pspec9},#{Pspec10},#{Pspec11},#{Pspec12},#{Pspec13})
+	</insert>
+	
+	<delete id="deleteProd" parameterType="_int" >
+ 		delete from Prod where prodID = #{prodID}
+	</delete>
+	
+	<update id="updateNews" parameterType="vo.ProdReviewVO" >
+		update Prod
+		set manufacturer=#{manufacturer}, PType=#{PType},PName=#{PName}, PImg=#{PImg},PPlain=#{PPlain},Pspec1=#{Pspec1},Pspec2=#{Pspec2},Pspec3=#{Pspec3},Pspec4=#{Pspec4},Pspec5=#{Pspec5},Pspec6=#{Pspec6},Pspec7=#{Pspec7},Pspec8=#{Pspec8},Pspec9=#{Pspec9},Pspec10=#{Pspec10},Pspec11=#{Pspec11},Pspec12=#{Pspec12},Pspec13=#{Pspec13}
+		where prodID = #{prodID}
+	</update>
+	
+ 	
+ 	<!--
+ 	<select id="selectOneNews" resultType="vo.ProdReviewVO" parameterType="_int" >
+ 		select id, writer, title, content, to_char(writedate,'yyyy"년" mm"월" dd"일"') AS "writedate", cnt from news where id = #{id}
+	</select>
+	
+  	<insert id="insertNews" parameterType="vo.ProdReviewVO">
+		<selectKey resultType="int" keyProperty="id" order="BEFORE">
+			select news_seq.nextval from dual
+ 		</selectKey>
+		insert into news values (#{id}, #{writer}, #{title}, #{content}, sysdate, 0)
+	</insert>
+	
+	<select id="searchTitleNews" parameterType="string" resultType= "vo.ProdReviewVO">
+    	select id, writer, title, content, to_char(writedate,'yyyy"년" mm"월" dd"일"') AS "writedate", cnt
+		from news
+    	where title like '%'||#{key}||'%'
+    </select>
+    
+    <select id="searchWriterNews" parameterType="string" resultType= "vo.ProdReviewVO">
+    	select id, writer, title, content, to_char(writedate,'yyyy"년" mm"월" dd"일"') AS "writedate", cnt
+		from news
+    	where writer like '%'||#{key}||'%'
+    </select>
+    
+    <delete id="deleteNews" parameterType="_int" >
+ 		delete from news where id = #{id}
+	</delete>
+	
+	<update id="updateNews" parameterType="vo.ProdReviewVO" >
+		update news
+		set writer = #{writer}, title = #{title}, content = #{content}
+		where id = #{id}
+	</update>
+	
+	<update id="updateViews" parameterType="vo.ProdReviewVO" >
+		update news
+		set cnt = #{cnt}
+		where id = #{id}
+	</update>
+	
+	<select id="selectTotalNewsNum" resultType="Integer">
+ 		SELECT count(id) from news
+	</select>
+	 -->
+</mapper>
+
+
+
+
+
+
+
+
