@@ -128,8 +128,9 @@ max-width:100%;
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 mx-auto">
-				<p style = "color: white;text-align: left; margin-left: 50px;"">mx master</p><br>
+					<p style = "color: white;text-align: left; margin-left: 50px;"">mx master</p><br>
 					<h2 class="text-white mb-4" style ="margin:auto;">${item.viewTitle}</h2>
+					<p style = "color: white;text-align: right; margin-right: 50px;font-size: 0.8rem;"">${item.nickName }<br>2020년 8월 21일</p>
 					<div style="padding:50px">
 					${item.viewContenxt }
 					</div>
