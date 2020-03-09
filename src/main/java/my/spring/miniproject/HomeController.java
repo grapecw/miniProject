@@ -55,7 +55,7 @@ public class HomeController {
 	public ModelAndView uploadboard() {
 		ModelAndView mav = new ModelAndView();
 		
-		mav.addObject("posting", dao.selectOne(1));
+		mav.addObject("list", dao.listAll(11111));
 		mav.setViewName("uploadboard");
 
 		return mav;
@@ -63,6 +63,11 @@ public class HomeController {
 	
 	@RequestMapping(value = "/prodBoard", method = RequestMethod.GET)
 	public String prodBoard() {
+//		ModelAndView mav = new ModelAndView();
+//
+//		mav.addObject("list", dao.listAll(11111));
+//		mav.setViewName("prodBoard");
+
 		return "prodBoard";
 	}
 	
@@ -70,15 +75,26 @@ public class HomeController {
 	public String boardWrite() {
 	  return "boardWrite";
 	}
+	
+	@RequestMapping(value = "/viewReview", method = RequestMethod.GET)
+	public ModelAndView boardWrite(int reViewID) {
+		ModelAndView mav = new ModelAndView();
+	
+		mav.addObject("item", dao.selectOne(reViewID));
+		mav.setViewName("viewReview");
+		
+		return mav;
+	}
+	
 	@RequestMapping(value = "/write1", method = RequestMethod.POST)
 	public ModelAndView upboardWrite(ProdReviewVO vo) {
 		
 		ModelAndView mav = new ModelAndView();
-//		boolean result = dao.insert(vo);
-//		if (result)
-//			System.out.println("�궫�엯 �꽦怨�");
-//		else
-//			System.out.println("�궫�엯 �떎�뙣");
+		boolean result = dao.insert(vo);
+		if (result)
+			System.out.println("�궫�엯 �꽦怨�");
+		else
+			System.out.println("�궫�엯 �떎�뙣");
 //
 ////		mav.addObject("list", listAll());
 		mav.setViewName("uploadboard");
@@ -86,59 +102,39 @@ public class HomeController {
 		return mav;
 	}
 	
-	
-//	@PostMapping("/image")
-//    @ResponseBody
-//    public ResponseEntity<?> handleFileUpload(@RequestParam("file") MultipartFile file) {
-//        try {
-//            UploadFile uploadedFile = imageService.store(file);
-//            return ResponseEntity.ok().body("/image/" + uploadedFile.getId());
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return ResponseEntity.badRequest().build();
-//        }
-//    }
-	
-	
 	@Autowired
 	ServletContext context; 
 	
-	@RequestMapping(value = "/image", produces = "application/json; charset=utf-8")
+	@RequestMapping(value = "/image", produces = "text/plain; charset=utf-8")
 	@ResponseBody
-	public ModelAndView saveFile(MultipartRequest mreq) {
-//		System.out.println("들어왔니?");
+	public String saveFile(MultipartRequest mreq) {
+
 		String fileInfo=null;
 		ModelAndView mav = new ModelAndView();
 		List<MultipartFile> list = mreq.getFiles("file");
 		String resultStr = "";
 		mav.setViewName("boardWrite");
-//		System.out.println("여긴 옴??");
+
 		for (MultipartFile mfile : list) {
-//			System.out.println("여기는??");
+
 			String fileName = mfile.getOriginalFilename();
 			try {
-//				System.out.println(context.getRealPath("/"));
+
 				fileInfo = context.getRealPath("/") + "resources/img/"+fileName;
-				// context.getRealPath 而⑤뱶濡ㅻ윭, 利� �씠 �봽濡쒖젥�듃�쓽 理쒖긽�엳 �뤃�뜑瑜� 異붿텧�븯�뒗 臾몄옣
-				// �듅�젙 �쐞移섏뿉 �삱由щ㈃ �겢�씪�씠�뼵�듃媛� �젒洹쇱쓣 �븯吏� 紐삵븳, 洹몃윭�땲源� �겢�씪�씠�뼵�듃媛� �젒洹� 媛��뒫�븳 �뤃�뜑�씤 resources�뿉 �삱由ш린 �쐞�빐�꽌
 				File f = new File(fileInfo);
 				System.out.println(fileInfo);
 				if (f.exists()) {
-					
-					resultStr += fileName + " : �뙆�씪�씠 �씠誘� 議댁옱�빐�슂!!<br>";
+					resultStr = "/miniproject/resources/img/"+fileName;
 				} else {
 					mfile.transferTo(new File(fileInfo));
-					resultStr += fileName + " : �뙆�씪�씠 ���옣�릺�뿀�뼱�슂!!<br>";
+					resultStr = "/miniproject/resources/img/"+fileName;
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
-				resultStr += fileName + " : �삤瑜섍� 諛쒖깮�뻽�뼱�슂!!";				
+	
 			}
 		}
-		mav.addObject("url", resultStr);
-//		System.out.print(fileInfo);
-		String s = "{\"url\" : \""+fileInfo+"\"}";
-		return mav;
+		return resultStr;
 	}
 	
 }

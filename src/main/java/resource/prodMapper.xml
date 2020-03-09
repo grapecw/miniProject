@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="resource.prodReviewMapper">
-	
+	<!-- 
  	<select id="selectOneProd" resultType="vo.ProdVO" parameterType="_int" >
  		select prodID, manufacturer, PType,PName,PImg,PPlain,Pspec1,Pspec2,Pspec3,Pspec4,Pspec5,Pspec6,Pspec7,Pspec8,Pspec9,Pspec10,Pspec11,Pspec12,Pspec13
 		from prod
@@ -27,12 +27,15 @@
  		delete from Prod where prodID = #{prodID}
 	</delete>
 	
-	<update id="updateNews" parameterType="vo.ProdReviewVO" >
+	<update id="updateNews" parameterType="vo.ProdVO" >
 		update Prod
 		set manufacturer=#{manufacturer}, PType=#{PType},PName=#{PName}, PImg=#{PImg},PPlain=#{PPlain},Pspec1=#{Pspec1},Pspec2=#{Pspec2},Pspec3=#{Pspec3},Pspec4=#{Pspec4},Pspec5=#{Pspec5},Pspec6=#{Pspec6},Pspec7=#{Pspec7},Pspec8=#{Pspec8},Pspec9=#{Pspec9},Pspec10=#{Pspec10},Pspec11=#{Pspec11},Pspec12=#{Pspec12},Pspec13=#{Pspec13}
 		where prodID = #{prodID}
 	</update>
-	
+	 -->
+	 
+	 
+	 
  	
  	<!--
  	<select id="selectOneNews" resultType="vo.ProdReviewVO" parameterType="_int" >

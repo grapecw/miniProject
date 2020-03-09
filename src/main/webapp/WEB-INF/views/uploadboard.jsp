@@ -238,7 +238,7 @@ h2 a {
 	border-left: 1px solid #e8e8e8;
 	border-top: 1px solid #fff;
 	border-bottom: 1px solid #e8e8e8;
-	padding: 10px 15px;
+	padding: 5px 15px;
 	position: relative;
 	transition: all 300ms;
 }
@@ -273,7 +273,7 @@ h2 a {
 	box-shadow: inset -1px -1px 0 #fff;
 }
 
-#prodboard tbody:hover td {
+/* #prodboard tbody:hover td {
 	color: transparent;
 	text-shadow: 0 0 3px #aaa;
 }
@@ -281,7 +281,10 @@ h2 a {
 #prodboard tbody:hover tr:hover td {
 	color: #444;
 	text-shadow: 0 1px 0 #fff;
-}
+} */
+
+
+
 </style>
 <body id="page-top" class="masthead">
 
@@ -324,13 +327,13 @@ h2 a {
 	<section id="projects" class="projects-section">
 		<article
 			style="text-align: center; vertical-align: middle; width: 80%; margin: auto; color: black">
-			
+			<%-- 
 			<%
 			ProdReviewVO posting = (ProdReviewVO)request.getAttribute("posting");
 			%>
 			
 			<%= posting.getViewTitle() %>
-			
+			--%>
 			<hr>
 			
 			<div id="imgarea">
@@ -391,30 +394,24 @@ h2 a {
 			</div>
 
 			<div>
-			<!--
 				<table id="prodboard">
 					<thead>
 						<tr>
-							<th>Option</th>
-							<th>Default</th>
-							<th>Description</th>
+							<th>제목</th>
+							<th>닉네임</th>
+							<th>업로드 날짜</th>
 						</tr>
 					</thead>
 					<tbody>
+						<c:forEach var="item" items="${requestScope.list }">
 						<tr>
-							<td><strong>showSpeed</strong></td>
-							<td>15</td>
-							<td>The speed of the show/reveal</td>
+							<td onclick="location.href='/miniproject/viewReview?reViewID=${item.reViewID}'">${item.viewTitle}</td>
+							<td>${item.nickName}</td>
+							<td>${item.viewDate}</td>
 						</tr>
-						<tr>
-							<td><strong>showSpeed</strong></td>
-							<td>15</td>
-							<td>The speed of the show/reveal</td>
-						</tr>
-
+						</c:forEach>
 					</tbody>
 				</table>
-			-->
 			</div>
 		</article>
 	</section>

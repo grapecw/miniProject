@@ -11,13 +11,13 @@
  	</select>
  	
  	<!-- 물품에 들어가면 그 물품에 대한 리뷰의 갯수 출력 -->
- 	<!--  
- 	<select id="selectReviewList"  resultType="vo.ProdReviewVO" parameterType="_int">
+
+ 	<select id="selectReviewList"  resultType="vo.ProdReviewVO" parameterType="string">
  		select reViewID, NickName, viewTitle, to_char(ViewDate,'yyyy"년" mm"월" dd"일"') AS ViewDate, Viewcnt, ViewUpCnt, ViewStar
-		from (reViewID, NickName, viewTitle, ViewDate, Viewcnt, ViewUpCnt, ViewStar) 
-		where rnum between  1+10*#{pagenum} and 10+10*#{pagenum} AND prodID=#{prodID}
+		from prodReview
+		where prodID = #{prodID}
  	</select>
- 	-->
+
  	
  	<!-- 그 물품에 대한 리뷰를 작성 하는 부분 -->
  	<insert id="insertReview" parameterType="vo.ProdReviewVO">

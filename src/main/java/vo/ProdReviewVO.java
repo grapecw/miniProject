@@ -19,6 +19,7 @@ public class ProdReviewVO {
 		IDCord=1111;
 		IDEmail="111";
 		prodID="11111";
+		NickName="11111";
 	}
 	
 	public int getReViewID() {

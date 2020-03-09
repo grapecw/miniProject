@@ -48,6 +48,19 @@ public class ProductReviewDAO {
 		return result;
 	}
 	
+	public List<ProdReviewVO> listAll(int prodID) {
+	// TODO Auto-generated method stub
+	System.out.println("Mybatis 를 사용 DB 연동-listAll ");
+	
+	List<ProdReviewVO> list = new ArrayList<ProdReviewVO>();
+	String statement = "resource.prodReviewMapper.selectReviewList";
+	System.out.println(prodID);
+	list = session.selectList(statement, Integer.toString(prodID));
+
+	System.out.println(session.getClass().getName());
+	return list;
+}
+	
 //	public boolean insert(NewsVO vo) {
 //		// TODO Auto-generated method stub
 //

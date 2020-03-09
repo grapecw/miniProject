@@ -61,8 +61,6 @@
 	<br>
 	<br>
 
-
-
 	<div style="width: 60%; margin: auto;">
 		<form method="post" action="/miniproject/write1" id="summernote_item">
 			<input type="text" name="viewTitle" class="form-control" id="subject"
@@ -76,7 +74,6 @@
 	<script>
 		function goWrite(frm) {
 			var title = frm.viewTitle.value;
-			var writer = frm.NickName.value;
 			var content = frm.ViewContenxt.value;
 
 			if (title.trim() == '') {
@@ -102,6 +99,7 @@
 						enctype : 'multipart/form-data',
 						processData : false,
 						success : function(url) {
+							console.log(url);
 							$(el).summernote('editor.insertImage', url);
 							$('#imageBoard > ul')
 									.append(
