@@ -92,11 +92,10 @@ public class HomeController {
 		ModelAndView mav = new ModelAndView();
 		boolean result = dao.insert(vo);
 		if (result)
-			System.out.println("�궫�엯 �꽦怨�");
+			System.out.println("성공");
 		else
-			System.out.println("�궫�엯 �떎�뙣");
-//
-////		mav.addObject("list", listAll());
+			System.out.println("실패");
+		
 		mav.setViewName("uploadboard");
 		System.out.print(vo.getViewContenxt());
 		return mav;

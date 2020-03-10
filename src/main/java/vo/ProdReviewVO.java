@@ -20,6 +20,9 @@ public class ProdReviewVO {
 		IDEmail="111";
 		prodID="11111";
 		NickName="11111";
+		Viewcnt = 0;
+		ViewUpCnt = 0;
+		ViewPoice = 0;
 	}
 	
 	public int getReViewID() {
