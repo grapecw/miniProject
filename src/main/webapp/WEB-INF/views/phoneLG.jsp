@@ -6,98 +6,158 @@
 <head>
 <style>
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
+.wrap{
+  width: 87%;
+  margin: auto;
+  padding: 0 10px;
+  background-color: rgba(255,255,255,0.9);
+  overflow: hidden;
+  box-shadow: 0 0 5px #eee;
+}
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: #353540;
-} 
-
-.l-container {
-  display: grid;
-  grid-template-columns: 200px 200px 200px 200px;
-  grid-gap: 30px;
-  width: 100%;
-  max-width: 1200px;
-  padding: 30px;
+img{
+  /* max-width: 100%;
+  height: auto; */
+  width : 250px;
+  height : 250px;
   
 }
-/* @media screen and (max-width: 760px) {
-  .l-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
- */
-.b-game-card {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  padding-bottom: 150%;
-  perspective: 1000px;
-}
-.b-game-card__cover {
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
-  background-size: cover;
-  perspective-origin: 50% 50%;
-  transform-style: preserve-3d;
-  transform-origin: top center;
-  will-change: transform;
-  transform: skewX(0.001deg);
-  transition: transform 0.35s ease-in-out;
-}
-.b-game-card__cover::after {
-  display: block;
-  content: "";
-  position: absolute;
-  z-index: 100;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 120%;
-  background: linear-gradient(226deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.4) 35%, rgba(255, 255, 255, 0.2) 42%, rgba(255, 255, 255, 0) 60%);
-  transform: translateY(-20%);
-  will-change: transform;
-  transition: transform 0.65s cubic-bezier(0.18, 0.9, 0.58, 1);
-}
-.b-game-card:hover .b-game-card__cover {
-  transform: rotateX(7deg) translateY(-6px);
-}
-.b-game-card:hover .b-game-card__cover::after {
-  transform: translateY(0%);
-}
-.b-game-card::before {
-  display: block;
-  content: "";
-  position: absolute;
-  top: 5%;
-  left: 5%;
-  width: 90%;
-  height: 90%;
-  background: rgba(0, 0, 0, 0.5);
-  box-shadow: 0 6px 12px 12px rgba(0, 0, 0, 0.4);
-  will-change: opacity;
-  transform-origin: top center;
-  transform: skewX(0.001deg);
-  transition: transform 0.35s ease-in-out, opacity 0.5s ease-in-out;
-}
-.b-game-card:hover::before {
-  opacity: 0.6;
-  transform: rotateX(7deg) translateY(-6px) scale(1.05);
+.icon {
+width : 20px;
+height : 20px;
 }
 
+h1, h2, h3, h4, h5, h6 { letter-spacing: 0.05em; font-weight: 400; }
+
+h1{text-align:center;}
+
+.row{
+
+}
+
+.more:link, .more:visited {
+  transition-duration: 0.2s;    
+  transition-timing-function: ease-out;
+}
+
+[class*='col-']{
+  float:left;   
+}
+
+.col-1-3{
+  width: 33.33%;
+  padding: 20px;
+}
+  
+.col-2-3{
+  width: 66.66%; 
+  padding: 20px;
+}
+
+.col-1-4{
+  width: 25%; 
+  padding: 10px;
+
+}
+
+.show{
+  width: 100%;
+  height: 100%;
+  float: left;
+  border: 1px solid rgba(0,0,0,0.04);
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  cursor: default;
+  background: #fff;
+  display: block;
+  border-radius: 4px;
+}
+
+
+.aspect{
+  position: relative;
+  padding-bottom: 120%;
+  height: 0;
+  overflow: hidden;
+}
+
+.show .mask{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0
+}
+
+.show-first a.more {
+  display: inline-block;
+  text-decoration: none;
+  padding: 7px 14px; 
+  background: #FFF;
+  color: #222;
+  text-transform: uppercase;
+  box-shadow: 0 0 1px #000;
+  position: relative;
+  border: 1px solid #999;
+
+}
+
+.show-first a.more:hover {
+  box-shadow: 0 0 5px #000;
+}
+
+.show-first p{
+  letter-spacing: 0.15em;
+  color: #f4f4f4;
+  font-size: 20px; 
+}
+
+.show-first img {
+  transition: all 0.2s linear;
+}
+
+.show-first .mask {
+  opacity: 0;
+  background-color: rgba(0,0,0, 0.4);
+  transition: all 0.4s ease-in-out;
+}
+.show-first h2 {
+  color: #f2f2f2;
+  margin-top: 10%;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+  background: rgba(0,0,0,0.7);
+}
+.show-first p {
+  opacity: 0;
+  transition: all 0.2s linear;
+}
+.show-first a.info{
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.show-first:hover img {
+  transform: scale(1.2);
+}
+.show-first:hover .mask {
+  opacity: 1;
+}
+.show-first:hover h2,
+.show-first:hover p,
+.show-first:hover a.info {
+  opacity: 1;
+}
+.show-first:hover p {
+  transition-delay: 0.1s;
+}
+.show-first:hover a.info {
+  transition-delay: 0.2s;
+}
 
 </style>
   <meta charset="utf-8">
@@ -113,7 +173,7 @@ body {
 
 <!-- Custom fonts for this template -->
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css">
+	href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css"">
 <link href="https://fonts.googleapis.com/css?family=Varela+Round"
 	rel="stylesheet">
 <link
@@ -138,6 +198,8 @@ body {
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/agency.css"
 	rel="stylesheet">
+
+
 
 </head>
 
@@ -169,11 +231,11 @@ body {
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="#signup"> <img
 							src="/miniproject/resources/img/login.png" width="20px"
-							height="20px"></a></li>
+							height="20px" class="icon"></a></li>
 					<li class="nav-item"><a class="nav-link js-scroll-trigger"
 						href="#signup"> <img
 							src="/miniproject/resources/img/logout.png" width="20px"
-							height="20px"></a></li>
+							height="20px" class="icon"></a></li>
 
 				</ul>
 			</div>
@@ -183,32 +245,24 @@ body {
   <!-- Header -->
 <!-- <header > -->
 <section id="partout" style="margin-top : 200px;">
-<div class="l-container">
-  <div class="b-game-card" onclick="location.href='/miniproject/tabletSAMSUNG';">
-    <div class="b-game-card__cover" style="background-image: url(/miniproject/resources/img/SAMSUNGLOGO2.png);" ></div>
-  </div>
-  <div class="b-game-card" onclick="location.href='/miniproject/tabletLG';">
-    <div class="b-game-card__cover" style="background-image: url(/miniproject/resources/img/LGLOGO.png);"></div>
-  </div>
-  <div class="b-game-card" onclick="location.href='/miniproject/tabletAPPLE';">
-    <div class="b-game-card__cover" style="background-image: url(/miniproject/resources/img/APPLELOGO.png);"></div>
-  </div>
-  <div class="b-game-card" onclick="location.href='/miniproject/tabletHUAWEI';">
-    <div class="b-game-card__cover" style="background-image: url(/miniproject/resources/img/HUAWEILOGO.png);"></div>
-  </div>
-  <div class="b-game-card" onclick="location.href='/miniproject/tabletTECLAST';">
-    <div class="b-game-card__cover" style="background-image: url(/miniproject/resources/img/TECLASTLOGO.png);"></div>
-  </div>
-  <div class="b-game-card" onclick="location.href='/miniproject/tabletASUS';">
-    <div class="b-game-card__cover" style="background-image: url(/miniproject/resources/img/ASUSLOGO.jpg);"></div>
-  </div>
-  <div class="b-game-card" onclick="location.href='/miniproject/tabletLENOVO';">
-    <div class="b-game-card__cover" style="background-image: url(/miniproject/resources/img/LENOVOLOGO.png);"></div>
-  </div>
-  <div class="b-game-card">
-    <div class="b-game-card__cover" style="background-image: url(https://andrewhawkes.github.io/codepen-assets/steam-game-cards/game_2.jpg);"></div>
-  </div>
-</div>
+
+<div class="wrap">
+	<div class="col-1-4">
+    	<div class="show show-first">
+      	<img src="/miniproject/resources/img/GRAM1.jpg" width="300px" height="300px" />
+      
+	      <div class="mask">
+        	<h2>LG Gram</h2>
+        	<p class="price">LG Gram 17인치</p>
+        	<a href="#" class="more">More info</a>
+      	</div>
+    	</div>
+  	</div>
+  	
+ 
+  
+</div>	
+
 </section>
 <!-- </header> -->
 

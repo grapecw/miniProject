@@ -151,23 +151,21 @@ body {
 			<input id="subBtn" type="button" value="글 작성" style="float: right;"
 				onclick="goWrite(this.form)" />
 			<div class="rating" style = "max-width : 115px;">
+				<input type="radio" name="ViewStar" value=1 id="r1">
+ 				<label for="r1"></label>
 
- <input type="radio" name="ViewStar" value=1 id="r1">
- <label for="r1"></label>
+ 				<input type="radio" name="ViewStar" value=2 id="r2">
+ 				<label for="r2"></label>
 
- <input type="radio" name="ViewStar" value=2 id="r2">
- <label for="r2"></label>
+ 				<input type="radio" name="ViewStar" value=3 id="r3">
+ 				<label for="r3"></label>
 
- <input type="radio" name="ViewStar" value=3 id="r3">
- <label for="r3"></label>
+ 				<input type="radio" name="ViewStar" value=4 id="r4">
+ 				<label for="r4"></label>
 
- <input type="radio" name="ViewStar" value=4 id="r4">
- <label for="r4"></label>
-
- <input type="radio" name="ViewStar" value=5 id="r5">
- <label for="r5"></label>
-
-</div>
+ 				<input type="radio" name="ViewStar" value=5 id="r5">
+ 				<label for="r5"></label>
+			</div>
 		</form>
 	</div>
 
