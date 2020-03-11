@@ -2,7 +2,15 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="resource.prodReviewMapper">
+<mapper namespace="resource.prodMapper">
+	<!-- 
+	<select id="selectOneProd" resultType="vo.ProdVO" parameterType="_int" >
+ 		select manufacturer, PType,PName,PImg
+		from prod
+		where prodID = #{prodID}
+	</select>
+	 -->
+	 
 	<!-- 
  	<select id="selectOneProd" resultType="vo.ProdVO" parameterType="_int" >
  		select prodID, manufacturer, PType,PName,PImg,PPlain,Pspec1,Pspec2,Pspec3,Pspec4,Pspec5,Pspec6,Pspec7,Pspec8,Pspec9,Pspec10,Pspec11,Pspec12,Pspec13

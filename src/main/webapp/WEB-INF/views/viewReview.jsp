@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"
-	import="vo.ProdReviewVO"%>
+	pageEncoding="UTF-8" import="vo.ProdReviewVO"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <!-- <html lang="en"> -->
@@ -26,23 +25,104 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/lightbox.css"
 	rel="stylesheet" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link
+	href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i"
+	rel="stylesheet">
 <style type="text/css">
 .col-lg-8 p {
-color : #808080;
-margin-top: 0.5rem;
-margin-bottom: 0.5rem;
-text-align: left;
-}
-.col-lg-8 h2 {
-font-size: 2rem;
-max-width:80%;
-}
-.col-lg-8 img {
-max-width:100%;
+	color: #808080;
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+	text-align: left;
 }
 
+.col-lg-8 h2 {
+	font-size: 2rem;
+	max-width: 80%;
+}
+
+.col-lg-8 img {
+	max-width: 100%;
+}
+
+.dropdown {
+	display: inline-block;
+	position: relative;
+}
+
+.dd-button {
+	display: inline-block;
+	border: 1px solid gray;
+	border-radius: 4px;
+	padding: 10px 30px 10px 20px;
+	background-color: #ffffff;
+	cursor: pointer;
+	white-space: nowrap;
+}
+
+.dd-button:after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 15px;
+	transform: translateY(-50%);
+	width: 0;
+	height: 0;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 5px solid black;
+}
+
+.dd-button:hover {
+	background-color: #eeeeee;
+}
+
+.dd-input {
+	display: none;
+}
+
+.dd-menu {
+	position: absolute;
+	top: 100%;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 0;
+	margin: 2px 0 0 0;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+	background-color: #ffffff;
+	list-style-type: none;
+}
+
+.dd-input+.dd-menu {
+	display: none;
+}
+
+.dd-input:checked+.dd-menu {
+	display: block;
+}
+
+.dd-menu li {
+	padding: 10px 20px;
+	cursor: pointer;
+	white-space: nowrap;
+}
+
+.dd-menu li:hover {
+	background-color: #f6f6f6;
+}
+
+.dd-menu li a {
+	display: block;
+	margin: -10px -20px;
+	padding: 10px 20px;
+}
+
+.dd-menu li.divider {
+	padding: 0;
+	border-bottom: 1px solid #cccccc;
+}
 </style>
 
 <!-- 
@@ -117,7 +197,7 @@ max-width:100%;
 
 </style>
  -->
- </head>
+</head>
 
 <body id="page-top" class="masthead">
 
@@ -128,19 +208,39 @@ max-width:100%;
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 mx-auto">
-					<p style = "color: white;text-align: left; margin-left: 50px;"">mx master</p><br>
-					<h2 class="text-white mb-4" style ="margin:auto;">${item.viewTitle}</h2>
-					<p style = "color: white;text-align: right; margin-right: 50px;font-size: 0.8rem;"">${item.nickName }<br>2020년 8월 21일</p>
-					<hr style="margin:0px;background-color: white;">
-					<div style="padding:50px; padding-top: 10px;">
-					${item.viewContenxt }
-					</div>
+					<p style="color: white; text-align: left; margin-left: 50px;"">mx
+						master</p>
+					<br>
+					<h2 class="text-white mb-4" style="margin: auto;">${item.viewTitle}</h2>
+					<p
+						style="color: white; text-align: right; margin-right: 50px; font-size: 0.8rem;"">${item.nickName }<br>2020년
+						8월 21일
+					</p>
+					<hr style="margin: 0px; background-color: white;">
+					<div style="padding: 50px; padding-top: 10px;">
+						${item.viewContenxt }</div>
 					<!-- <p class="text-white-50">Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
 					<a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p> -->
 				</div>
 			</div>
+			<label class="dropdown">
+
+				<div class="dd-button">Dropdown</div> <input type="checkbox"
+				class="dd-input" id="test">
+
+				<ul class="dd-menu">
+					<li>Action</li>
+					<li>Another action</li>
+					<li>Something else here</li>
+					<li class="divider"></li>
+					<li><a href="http://rane.io">Link to Rane.io</a></li>
+				</ul>
+
+			</label>
 		</div>
 	</section>
+
+
 	<!-- 
 	<section id="projects" class="projects-section">
 	
@@ -177,23 +277,22 @@ max-width:100%;
 	<script src="<c:url value="/resources/js/lightbox.js" />"></script>
 	<script src="<c:url value="/resources/js/grayscale.js" />"></script>
 	<script>
-	var btn = $('#button');
+		var btn = $('#button');
 
-	$(window).scroll(function() {
-	  if ($(window).scrollTop() > 300) {
-	    btn.addClass('show');
-	  } else {
-	    btn.removeClass('show');
-	  }
-	});
+		$(window).scroll(function() {
+			if ($(window).scrollTop() > 300) {
+				btn.addClass('show');
+			} else {
+				btn.removeClass('show');
+			}
+		});
 
-	btn.on('click', function(e) {
-	  e.preventDefault();
-	  $('html, body').animate({scrollTop:0}, '300');
-	});
-
-
-	
+		btn.on('click', function(e) {
+			e.preventDefault();
+			$('html, body').animate({
+				scrollTop : 0
+			}, '300');
+		});
 	</script>
 </body>
 </html>

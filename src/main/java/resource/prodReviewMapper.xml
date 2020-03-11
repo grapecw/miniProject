@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="resource.prodReviewMapper">
-	
+	 
  	<select id="selectReview"  resultType="vo.ProdReviewVO" parameterType="_int">
  		select reViewID, IDCord, NickName, IDEmail, prodID, viewTitle, to_char(ViewDate,'yyyy"년" mm"월" dd"일"') AS ViewDate, ViewContenxt, Viewcnt, ViewUpCnt, ViewImg, ViewStar, ViewPoice
 		from prodReview
