@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
-	import="java.util.List, java.util.ArrayList,vo.ProdReviewVO"%>
+	import="java.util.List, java.util.ArrayList,vo.ProdVO"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -64,6 +64,7 @@ h1 {
 	line-height: 1em;
 	text-align: center;
 	color: #4DC3FA;
+	
 }
 
 h2 {
@@ -92,9 +93,10 @@ h2 a {
 }
 
 .container1 th h1 {
+	line-height: 3.5rem;
 	font-weight: bold;
-	font-size: 1em;
-	text-align: left;
+	font-size: 1.2em;
+	text-align: center;
 	color: #185875;
 }
 
@@ -107,7 +109,7 @@ h2 a {
 }
 
 .container1 {
-	text-align: left;
+	text-align: center;
 	overflow: hidden;
 	width: 80%;
 	margin: 0 auto;
@@ -137,6 +139,10 @@ h2 a {
 
 .container1 td:first-child {
 	color: #FB667A;
+}
+
+.container1 td:nth-child(2) {
+	color: wheat;
 }
 
 .container1 tr:hover {
@@ -234,6 +240,7 @@ h2 a {
 }
 
 #prodboard td {
+
 	border-right: 1px solid #fff;
 	border-left: 1px solid #e8e8e8;
 	border-top: 1px solid #fff;
@@ -337,54 +344,126 @@ h2 a {
 			<hr>
 			
 			<div id="imgarea">
-				<a href="/test/resources/img/1.png" data-lightbox="image-1"
+				<a href="/miniproject/resources/img/1.png" data-lightbox="image-1"
 					data-title="My caption"><img class="prodimg"
-					src="/test/resources/img/1.png" style="width: 20%"></a> <a
-					href="/test/resources/img/1.png" data-lightbox="image-1"
+					src="/miniproject/resources/img/1.png" style="width: 20%"></a> <a
+					href="/miniproject/resources/img/1.png" data-lightbox="image-1"
 					data-title="My caption"><img class="prodimg"
-					src="/test/resources/img/1.png" style="width: 20%"></a> <a
-					href="/test/resources/img/1.png" data-lightbox="image-1"
+					src="/miniproject/resources/img/1.png" style="width: 20%"></a> <a
+					href="/miniproject/resources/img/1.png" data-lightbox="image-1"
 					data-title="My caption"><img class="prodimg"
-					src="/test/resources/img/1.png" style="width: 20%"></a>
+					src="/miniproject/resources/img/1.png" style="width: 20%"></a>
 			</div>
+			${ requestScope.prod.prodID }
+			<% ProdVO vo = (ProdVO)request.getAttribute("prod"); %>
 			<div id="spectable">
 				제품 사향
 				<table class="container1">
 					<thead>
-						<tr>
+						<tr style = "line-height: 3.5rem;">
 							<th><h1>Sites</h1></th>
 							<th><h1>Views</h1></th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>회사</td>
-							<td>애플</td>
-						</tr>
-						<tr>
-							<td>운영체제</td>
-							<td>윈도우</td>
-						</tr>
-						<tr>
-							<td>운영체제</td>
-							<td>윈도우</td>
-						</tr>
-						<tr>
-							<td>운영체제</td>
-							<td>윈도우</td>
-						</tr>
-						<tr>
-							<td>운영체제</td>
-							<td>윈도우</td>
-						</tr>
-						<tr>
-							<td>운영체제</td>
-							<td>윈도우</td>
-						</tr>
-						<tr>
-							<td>운영체제</td>
-							<td>윈도우</td>
-						</tr>
+						<% if(vo.getPspec1()!= null) { %>
+							<tr>
+							<% String[] spec1 = vo.getPspec1().split("%"); %>
+								<td><%= spec1[0] %></td>
+								<td><%= spec1[1] %></td>
+							</tr>
+						<% } %>
+						<% if(vo.getPspec2()!= null) { %>
+							<tr>
+							<% String[] spec1 = vo.getPspec2().split("%"); %>
+								<td><%= spec1[0] %></td>
+								<td><%= spec1[1] %></td>
+							</tr>
+						<% } %>
+						<% if(vo.getPspec3()!= null) { %>
+							<tr>
+							<% String[] spec1 = vo.getPspec3().split("%"); %>
+								<td><%= spec1[0] %></td>
+								<td><%= spec1[1] %></td>
+							</tr>
+						<% } %>
+						<% if(vo.getPspec4()!= null) { %>
+							<tr>
+							<% String[] spec1 = vo.getPspec4().split("%"); %>
+								<td><%= spec1[0] %></td>
+								<td><%= spec1[1] %></td>
+							</tr>
+						<% } %>
+						<% if(vo.getPspec5()!= null) { %>
+							<tr>
+							<% String[] spec1 = vo.getPspec5().split("%"); %>
+								<td><%= spec1[0] %></td>
+								<td><%= spec1[1] %></td>
+							</tr>
+						<% } %>
+						<% if(vo.getPspec6()!= null) { %>
+							<tr>
+							<% String[] spec1 = vo.getPspec6().split("%"); %>
+								<td><%= spec1[0] %></td>
+								<td><%= spec1[1] %></td>
+							</tr>
+						<% } %>
+						<% if(vo.getPspec7()!= null) { %>
+							<tr>
+							<% String[] spec1 = vo.getPspec7().split("%"); %>
+								<td><%= spec1[0] %></td>
+								<td><%= spec1[1] %></td>
+							</tr>
+						<% } %>
+						<% if(vo.getPspec8()!= null) { %>
+							<tr>
+							<% String[] spec1 = vo.getPspec8().split("%"); %>
+								<td><%= spec1[0] %></td>
+								<td><%= spec1[1] %></td>
+							</tr>
+						<% } %>
+						<% if(vo.getPspec9()!= null) { %>
+							<tr>
+							<% String[] spec1 = vo.getPspec9().split("%"); %>
+								<td><%= spec1[0] %></td>
+								<td><%= spec1[1] %></td>
+							</tr>
+						<% } %>
+						<% if(vo.getPspec10()!= null) { %>
+							<tr>
+							<% String[] spec1 = vo.getPspec10().split("%"); %>
+								<td><%= spec1[0] %></td>
+								<td><%= spec1[1] %></td>
+							</tr>
+						<% } %>
+						<% if(vo.getPspec11()!= null) { %>
+							<tr>
+							<% String[] spec1 = vo.getPspec11().split("%"); %>
+								<td><%= spec1[0] %></td>
+								<td><%= spec1[1] %></td>
+							</tr>
+						<% } %>
+						<% if(vo.getPspec12()!= null) { %>
+							<tr>
+							<% String[] spec1 = vo.getPspec12().split("%"); %>
+								<td><%= spec1[0] %></td>
+								<td><%= spec1[1] %></td>
+							</tr>
+						<% } %>
+						<% if(vo.getPspec13()!= null) { %>
+							<tr>
+							<% String[] spec1 = vo.getPspec13().split("%"); %>
+								<td><%= spec1[0] %></td>
+								<td><%= spec1[1] %></td>
+							</tr>
+						<% } %>
+						<% if(vo.getPspec14()!= null) { %>
+							<tr>
+							<% String[] spec1 = vo.getPspec14().split("%"); %>
+								<td><%= spec1[0] %></td>
+								<td><%= spec1[1] %></td>
+							</tr>
+						<% } %>
 					</tbody>
 				</table>
 			</div>

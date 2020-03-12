@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import dao.ProductReviewDAO;
 import vo.ProdReviewVO;
+import vo.ProdVO;
 
 /**
  * Handles requests for the application home page.
@@ -32,6 +33,7 @@ public class HomeController {
 	
 	@Autowired
 	ProductReviewDAO dao = null;
+
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -69,6 +71,16 @@ public class HomeController {
 //		mav.setViewName("prodBoard");
 
 		return "prodBoard";
+	}
+	
+	@RequestMapping(value = "/insertProd", method = RequestMethod.GET)
+	public String insertProd() {
+//		ModelAndView mav = new ModelAndView();
+//
+//		mav.addObject("list", dao.listAll(11111));
+//		mav.setViewName("prodBoard");
+
+		return "insertProd";
 	}
 	
 	@RequestMapping(value = "/write", method = RequestMethod.GET)

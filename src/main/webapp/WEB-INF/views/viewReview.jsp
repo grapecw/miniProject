@@ -204,10 +204,10 @@
 	<%@include file="./navbar.jsp"%>
 
 	<!-- About Section -->
-	<section id="about" class="about-section text-center">
+	<section >
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-8 mx-auto">
+				<div id="about" class="about-section text-center col-lg-8 mx-auto ">
 					<p style="color: white; text-align: left; margin-left: 50px;"">mx
 						master</p>
 					<br>
@@ -216,11 +216,14 @@
 						style="color: white; text-align: right; margin-right: 50px; font-size: 0.8rem;"">${item.nickName }<br>2020년
 						8월 21일
 					</p>
+					<br>
 					<hr style="margin: 0px; background-color: white;">
 					<div style="padding: 50px; padding-top: 10px;">
 						${item.viewContenxt }</div>
 					<!-- <p class="text-white-50">Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
 					<a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p> -->
+					<hr style="margin: 0px; background-color: white;">
+					<br><br>
 				</div>
 			</div>
 			<label class="dropdown">

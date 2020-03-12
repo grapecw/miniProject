@@ -4,16 +4,58 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import dao.ProductDAO;
+import dao.ProductReviewDAO;
+import vo.ProdVO;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class NotebookBrandController {
+	
+	@Autowired
+	ProductDAO dao = null;
+	
+	@RequestMapping(value = "/inProd", method = RequestMethod.GET)
+	public String insertProd() {
+//		ModelAndView mav = new ModelAndView();
+//
+//		mav.addObject("list", dao.listAll(11111));
+//		mav.setViewName("prodBoard");
+
+		return "insertProd";
+	}
+	
+	@RequestMapping(value = "/insertProd", method = RequestMethod.POST)
+	public String insertProd(ProdVO vo) {
+		boolean result = dao.insert(vo);
+		if (result)
+			System.out.println("성공");
+		else
+			System.out.println("실패");
+
+		System.out.print(vo.getPName());
+		
+		return "prodBoard";
+	}
+	@RequestMapping(value = "/uploadboard/{prodID}")
+	public ModelAndView selectProd(@PathVariable String prodID) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("prod", dao.selectOne(prodID));
+//		mav.addObject("list", dao.listAll(11111));
+		mav.setViewName("uploadboard");
+		
+		return mav;
+	}
 	
 	private static final Logger logger = LoggerFactory.getLogger(NotebookBrandController.class);
 	
@@ -26,6 +68,7 @@ public class NotebookBrandController {
 		
 		return "notebookSAMSUNG";
 	}
+	
 	
 	@RequestMapping(value = "/notebookLG", method = RequestMethod.GET)
 	public String nobookLG(Locale locale, Model model) {

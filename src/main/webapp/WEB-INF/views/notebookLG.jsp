@@ -254,7 +254,7 @@ h1{text-align:center;}
 	      <div class="mask">
         	<h2>LG Gram</h2>
         	<p class="price">LG Gram 17인치</p>
-        	<a href="#" class="more">More info</a>
+        	<a href="/miniproject/uploadboard/17Z990-VA70K" class="more">More info</a>
       	</div>
     	</div>
   	</div>
