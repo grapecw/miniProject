@@ -41,7 +41,7 @@
 					href="/miniproject/login"> <img src="/miniproject/resources/img/login.png"
 						width="20px" height="20px"></a></li> -->
 				<li class="nav-item"><a class="nav-link js-scroll-trigger"
-					onclick='window.open("/miniproject/login","_blank","height=500,width=500, status=yes,toolbar=no,menubar=no,location=no");return false'> 
+					onclick='window.open("/miniproject/login","_blank","height=800,width=500, status=yes,toolbar=no,menubar=no,location=no");return false'> 
 					<img src="/miniproject/resources/img/logout.png"
 						style ="width:20px; height:20px"></a></li>
 			</c:otherwise>

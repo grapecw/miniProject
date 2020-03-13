@@ -95,7 +95,7 @@ h2 a {
 .container1 th h1 {
 	line-height: 3.5rem;
 	font-weight: bold;
-	font-size: 1.2em;
+	font-size: 1.1em;
 	text-align: center;
 	color: #185875;
 }
@@ -181,7 +181,6 @@ h2 a {
 	width: 50%;
 	float: left;
 	box-sizing: border-box;
-	background: #ff0;
 }
 
 #oneLine {
@@ -291,6 +290,114 @@ h2 a {
 } */
 
 
+@import url(https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.1/css/material-wfont.css);
+
+body {
+  font-family: 'Roboto', Helvetica;
+  color: #737373;
+  font-weight: 300;
+}
+
+.container2 {
+  width: 400px;
+  background-color: #EFEFEF;
+}
+
+.inner {
+  padding: 1em;
+  background-color: white;
+  overflow: hidden;
+  position: relative;
+  -webkit-border-radius: 4px; 
+  -moz-border-radius: 4px; 
+  border-radius: 4px; 
+}
+
+.rating {
+  float: left;
+  width: 45%;
+  margin-right: 5%;
+  text-align: center;
+}
+
+.rating-num {
+  color: #333333;
+  font-size: 72px;
+  font-weight: 100;
+  line-height: 1em; 
+}
+
+.rating-stars {
+  font-size: 20px;
+  color: #E3E3E3;
+  margin-bottom: .5em;
+}
+.rating-stars .active {
+  color: #737373;
+}
+
+.rating-users {
+  font-size: 14px;
+}
+
+.histo {
+  float: left;
+  width: 50%;
+  font-size: 13px;
+}
+
+.histo-star {
+  float: left;
+  padding: 3px;
+
+}
+
+.histo-rate {
+  width: 100%;
+  display: block;
+  clear: both;
+}
+
+.bar-block {
+  margin-left: 5px;
+  color: black;
+  display: block;
+  float: left;
+  width: 75%;
+  position: relative;
+}
+
+.bar {
+  padding: 4px;
+  display: block;
+}
+
+#bar-five {
+  width: 0;
+  background-color: #9FC05A;
+}
+
+#bar-four {
+  width: 0;
+  background-color: #ADD633;
+}
+
+#bar-three {
+  width: 0;
+  background-color: #FFD834;
+}
+
+#bar-two {
+  width: 0;
+  background-color: #FFB234;
+}
+
+#bar-one {
+  width: 0;
+  background-color: #FF8B5A;
+}
+
+
 
 </style>
 <body id="page-top" class="masthead">
@@ -355,14 +462,15 @@ h2 a {
 					src="/miniproject/resources/img/1.png" style="width: 20%"></a>
 			</div>
 			${ requestScope.prod.prodID }
+			${ requestScope.prod.PName }
 			<% ProdVO vo = (ProdVO)request.getAttribute("prod"); %>
 			<div id="spectable">
 				제품 사향
 				<table class="container1">
 					<thead>
 						<tr style = "line-height: 3.5rem;">
-							<th><h1>Sites</h1></th>
-							<th><h1>Views</h1></th>
+							<th><h1>Function</h1></th>
+							<th><h1>Detail</h1></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -477,12 +585,79 @@ h2 a {
 					</tbody>
 				</table>
 			</div>
-			<div >
-				
-			</div>
 			<div id="starAndOneLine" style="margin: auto;">
-				<div id="starPoint">별점</div>
-				<div id="oneLine"><%= vo.getPPlain() %></div>
+				<div id="starPoint"><div class="container2">
+  <div class="inner">
+    <div class="rating">
+      <span class="rating-num">4.8</span>
+      <div class="rating-stars">
+        <span><i class="active icon icon-material-star-rate"></i></span>
+        <span><i class="active icon-star"></i></span>
+        <span><i class="active icon-star"></i></span>
+        <span><i class="active icon-star"></i></span>
+        <span><i class="icon-star"></i></span>
+      </div>
+      <div class="rating-users">
+        <i class="icon-user"></i> 1,014,004 total
+      </div>
+    </div>
+    
+    <div class="histo">
+      <div class="five histo-rate">
+        <span class="histo-star">
+          <i class="active icon-star"></i> 5           </span>
+        <span class="bar-block">
+          <span id="bar-five" class="bar">
+            <span>566,784</span>&nbsp;
+          </span> 
+        </span>
+      </div>
+      
+      <div class="four histo-rate">
+        <span class="histo-star">
+          <i class="active icon-star"></i> 4           </span>
+        <span class="bar-block">
+          <span id="bar-four" class="bar">
+            <span>171,298</span>&nbsp;
+          </span> 
+        </span>
+      </div> 
+      
+      <div class="three histo-rate">
+        <span class="histo-star">
+          <i class="active icon-star"></i> 3           </span>
+        <span class="bar-block">
+          <span id="bar-three" class="bar">
+            <span>94,940</span>&nbsp;
+          </span> 
+        </span>
+      </div>
+      
+      <div class="two histo-rate">
+        <span class="histo-star">
+          <i class="active icon-star"></i> 2           </span>
+        <span class="bar-block">
+          <span id="bar-two" class="bar">
+            <span>44,525</span>&nbsp;
+          </span> 
+        </span>
+      </div>
+      
+      <div class="one histo-rate">
+        <span class="histo-star">
+          <i class="active icon-star"></i> 1           </span>
+        <span class="bar-block">
+          <span id="bar-one" class="bar">
+            <span>136,457</span>&nbsp;
+          </span> 
+        </span>
+      </div>
+    </div>
+  </div>
+</div></div>
+				
+				<div id="oneLine" style="height: 167px;"><%= vo.getPPlain() %></div>
+				
 			</div>
 
 			<div>
@@ -497,7 +672,7 @@ h2 a {
 					<tbody>
 						<c:forEach var="item" items="${requestScope.list }">
 						<tr>
-							<td onclick="location.href='/miniproject/viewReview?reViewID=${item.reViewID}'">${item.viewTitle}</td>
+							<td onclick="location.href='/miniproject/viewReview?reViewID=${item.reViewID}&Pname=${ requestScope.prod.PName }'">${item.viewTitle}</td>
 							<td>${item.nickName}</td>
 							<td>${item.viewDate}</td>
 						</tr>

@@ -230,7 +230,7 @@ h1{text-align:center;}
 	      <div class="mask">
         	<h2>삼성 갤럭시북 이온</h2>
         	<p class="price">삼성 갤럭시북 이온<br>NT950XCJ-X59</p>
-        	<a href="#" class="more">More info</a>
+        	<a href="uploadboard/NT950XCJ-X59" class="more">More info</a>
       	</div>
     	</div>
   	</div>
@@ -242,7 +242,7 @@ h1{text-align:center;}
 	      <div class="mask">
         	<h2>삼성전자 노트북 3</h2>
         	<p class="price">삼성전자 노트북 3<br>NT340XAZ-AD1A</p>
-        	<a href="#" class="more">More info</a>
+        	<a href="uploadboard/NT340XAZ-AD1A" class="more">More info</a>
       	</div>
     	</div>
   	</div>
@@ -254,7 +254,7 @@ h1{text-align:center;}
 	      <div class="mask">
         	<h2>삼성전자 노트북 5</h2>
         	<p class="price">삼성전자 노트북 5<br>NT500R5Z-K78A</p>
-        	<a href="#" class="more">More info</a>
+        	<a href="uploadboard/NT500R5Z-K78A" class="more">More info</a>
       	</div>
     	</div>
   	</div>
@@ -266,7 +266,7 @@ h1{text-align:center;}
 	      <div class="mask">
         	<h2>삼성 갤럭시북 플렉스</h2>
         	<p class="price">삼성 갤럭시북 플렉스<br>NT950QCG-X716A</p>
-        	<a href="#" class="more">More info</a>
+        	<a href="uploadboard//NT950QCG-X716A" class="more">More info</a>
       	</div>
     	</div>
   	</div>

@@ -93,32 +93,35 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/viewReview", method = RequestMethod.GET)
-	public ModelAndView boardWrite(int reViewID, HttpSession session) {
+	public ModelAndView boardWrite(int reViewID, HttpSession session, String Pname) {
 		ModelAndView mav = new ModelAndView();
-	
+		System.out.print( Pname);
+		mav.addObject("Pname", Pname);
 		mav.addObject("item", dao.selectOne(reViewID));
 		mav.setViewName("viewReview");
-		System.out.print("22222:"+session.getAttribute("sessionId"));
+
 		return mav;
 	}
 	
 	@RequestMapping(value = "/write1", method = RequestMethod.POST)
-	public ModelAndView upboardWrite(ProdReviewVO vo,HttpSession session) {
+	public String upboardWrite(ProdReviewVO vo,HttpSession session,int ViewStar) {
 		ModelAndView mav = new ModelAndView();
 		LoginVO login=(LoginVO) (session.getAttribute("login"));
-		System.out.print(login.getIDCord());
+//		System.out.print(login.getIDCord()+"\t"+ViewStar);
 		vo.setIDCord(login.getIDCord());
 		vo.setNickName(login.getNickName());
 		vo.setIDEmail(login.getIDEmail());
+		vo.setViewStar(ViewStar);
+//		System.out.print(vo.getViewStar());
 		boolean result = dao.insert(vo);
 		if (result)
 			System.out.println("성공");
 		else
 			System.out.println("실패");
 		
-		mav.setViewName("uploadboard/"+vo.getProdID());
+		mav.setViewName(("uploadboard/"+vo.getProdID()));
 		System.out.print(vo.getViewContenxt());
-		return mav;
+		return "redirect:uploadboard/"+vo.getProdID();
 	}
 	
 	@Autowired

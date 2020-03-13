@@ -125,78 +125,6 @@
 }
 </style>
 
-<!-- 
-<style>
-	#button {
-  display: inline-block;
-  background-color: #FF9800;
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  border-radius: 4px;
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  transition: background-color .3s, 
-    opacity .5s, visibility .5s;
-  opacity: 0;
-  visibility: hidden;
-  z-index: 1000;
-}
-#button::after {
-  content: "\f077";
-  font-family: FontAwesome;
-  font-weight: normal;
-  font-style: normal;
-  font-size: 2em;
-  line-height: 50px;
-  color: #fff;
-}
-#button:hover {
-  cursor: pointer;
-  background-color: #333;
-}
-#button:active {
-  background-color: #555;
-}
-#button.show {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* Styles for the content section */
-
-.content {
-	clear: both;
-  width: 90%;
-  margin: 50px auto;
-  font-family: 'Merriweather', serif;
-  font-size: 17px;
-  color: #6c767a;
-  line-height: 1.9;
-  border-style: solid;
-    border-width: 1px;
-}
-@media (min-width: 500px) {
-  .content {
-    width: 43%;
-  }
-  #button {
-    margin: 30px;
-  }
-}
-.content h1 {
-  margin-bottom: -10px;
-  color: #03a9f4;
-  line-height: 1.5;
-}
-.content h3 {
-  font-style: italic;
-  color: #96a2a7;
-}
-
-</style>
- -->
 </head>
 
 <body id="page-top" class="masthead">
@@ -208,13 +136,12 @@
 		<div class="container">
 			<div class="row">
 				<div id="about" class="about-section text-center col-lg-8 mx-auto ">
-					<p style="color: white; text-align: left; margin-left: 50px;"">mx
-						master</p>
+					<p style="color: white; text-align: left; margin-left: 50px;"">${ requestScope.Pname }</p>
 					<br>
 					<h2 class="text-white mb-4" style="margin: auto;">${item.viewTitle}</h2>
 					<p
-						style="color: white; text-align: right; margin-right: 50px; font-size: 0.8rem;"">${item.nickName }<br>2020년
-						8월 21일
+						style="color: white; text-align: right; margin-right: 50px; font-size: 0.8rem;"">${item.nickName }
+						<br>${item.viewDate }
 					</p>
 					<br>
 					<hr style="margin: 0px; background-color: white;">
@@ -224,44 +151,20 @@
 					<a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p> -->
 					<hr style="margin: 0px; background-color: white;">
 					<br><br>
+					<c:forEach begin="0" end="4" step="1" varStatus="status">
+    					<c:choose>
+         					<c:when test = "${status.index < item.viewStar}">
+								<img alt="" src="/miniproject/resources/img/star_on.png" style="width : 23px; height : 23px">
+         					</c:when>
+         					<c:otherwise>
+         						<img alt="" src="/miniproject/resources/img/star.png" style="width : 23px; height :23px">
+         					</c:otherwise> 
+      					</c:choose> 
+					</c:forEach>
 				</div>
 			</div>
-			<label class="dropdown">
-
-				<div class="dd-button">Dropdown</div> <input type="checkbox"
-				class="dd-input" id="test">
-
-				<ul class="dd-menu">
-					<li>Action</li>
-					<li>Another action</li>
-					<li>Something else here</li>
-					<li class="divider"></li>
-					<li><a href="http://rane.io">Link to Rane.io</a></li>
-				</ul>
-
-			</label>
 		</div>
 	</section>
-
-
-	<!-- 
-	<section id="projects" class="projects-section">
-	
-		<a id="button"></a>
-		
-		<div class="content">
-			<h3>${item.viewTitle}</h3>
-  			<h2>${item.nickName }</h2>
-  			
-  			${item.viewContenxt }
-			
-		</div>
-	</section>
-	 -->
-
-
-
-
 
 	<!-- Footer -->
 	<footer class="bg-black small text-center text-white-50">
