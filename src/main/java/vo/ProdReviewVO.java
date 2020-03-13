@@ -9,6 +9,7 @@ public class ProdReviewVO {
 	private String viewTitle;
 	private String ViewDate;
 	private String ViewContenxt;
+	private String oneline;
 	private int Viewcnt;
 	private int ViewUpCnt;
 	private String ViewImg;

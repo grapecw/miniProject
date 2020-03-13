@@ -24,6 +24,8 @@ public class NotebookBrandController {
 	
 	@Autowired
 	ProductDAO dao = null;
+	@Autowired
+	ProductReviewDAO redao =null;
 	
 	@RequestMapping(value = "/inProd", method = RequestMethod.GET)
 	public String insertProd() {
@@ -51,7 +53,7 @@ public class NotebookBrandController {
 	public ModelAndView selectProd(@PathVariable String prodID) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("prod", dao.selectOne(prodID));
-//		mav.addObject("list", dao.listAll(11111));
+		mav.addObject("list", redao.listAll(prodID));
 		mav.setViewName("uploadboard");
 		
 		return mav;

@@ -373,13 +373,14 @@ h2 a {
 								<td><%= spec1[1] %></td>
 							</tr>
 						<% } %>
-						<% if(vo.getPspec2()!= null) { %>
+						 <% if(vo.getPspec2()!= null) { %>
 							<tr>
 							<% String[] spec1 = vo.getPspec2().split("%"); %>
 								<td><%= spec1[0] %></td>
 								<td><%= spec1[1] %></td>
 							</tr>
 						<% } %>
+						
 						<% if(vo.getPspec3()!= null) { %>
 							<tr>
 							<% String[] spec1 = vo.getPspec3().split("%"); %>
@@ -387,6 +388,7 @@ h2 a {
 								<td><%= spec1[1] %></td>
 							</tr>
 						<% } %>
+						
 						<% if(vo.getPspec4()!= null) { %>
 							<tr>
 							<% String[] spec1 = vo.getPspec4().split("%"); %>
@@ -394,6 +396,7 @@ h2 a {
 								<td><%= spec1[1] %></td>
 							</tr>
 						<% } %>
+						
 						<% if(vo.getPspec5()!= null) { %>
 							<tr>
 							<% String[] spec1 = vo.getPspec5().split("%"); %>
@@ -401,6 +404,7 @@ h2 a {
 								<td><%= spec1[1] %></td>
 							</tr>
 						<% } %>
+						
 						<% if(vo.getPspec6()!= null) { %>
 							<tr>
 							<% String[] spec1 = vo.getPspec6().split("%"); %>
@@ -408,6 +412,7 @@ h2 a {
 								<td><%= spec1[1] %></td>
 							</tr>
 						<% } %>
+						
 						<% if(vo.getPspec7()!= null) { %>
 							<tr>
 							<% String[] spec1 = vo.getPspec7().split("%"); %>
@@ -415,6 +420,7 @@ h2 a {
 								<td><%= spec1[1] %></td>
 							</tr>
 						<% } %>
+						
 						<% if(vo.getPspec8()!= null) { %>
 							<tr>
 							<% String[] spec1 = vo.getPspec8().split("%"); %>
@@ -422,6 +428,7 @@ h2 a {
 								<td><%= spec1[1] %></td>
 							</tr>
 						<% } %>
+						
 						<% if(vo.getPspec9()!= null) { %>
 							<tr>
 							<% String[] spec1 = vo.getPspec9().split("%"); %>
@@ -429,6 +436,7 @@ h2 a {
 								<td><%= spec1[1] %></td>
 							</tr>
 						<% } %>
+						
 						<% if(vo.getPspec10()!= null) { %>
 							<tr>
 							<% String[] spec1 = vo.getPspec10().split("%"); %>
@@ -436,6 +444,7 @@ h2 a {
 								<td><%= spec1[1] %></td>
 							</tr>
 						<% } %>
+						
 						<% if(vo.getPspec11()!= null) { %>
 							<tr>
 							<% String[] spec1 = vo.getPspec11().split("%"); %>
@@ -443,6 +452,7 @@ h2 a {
 								<td><%= spec1[1] %></td>
 							</tr>
 						<% } %>
+						
 						<% if(vo.getPspec12()!= null) { %>
 							<tr>
 							<% String[] spec1 = vo.getPspec12().split("%"); %>
@@ -467,9 +477,12 @@ h2 a {
 					</tbody>
 				</table>
 			</div>
+			<div >
+				
+			</div>
 			<div id="starAndOneLine" style="margin: auto;">
 				<div id="starPoint">별점</div>
-				<div id="oneLine">한 줄 평</div>
+				<div id="oneLine"><%= vo.getPPlain() %></div>
 			</div>
 
 			<div>
@@ -491,6 +504,10 @@ h2 a {
 						</c:forEach>
 					</tbody>
 				</table>
+				<form method = "get" action = "/miniproject/write" id="colwrite">
+					<input type="hidden" name="prodID" value="${ requestScope.prod.prodID }">
+					<input type="submit" value="글쓰기" > 
+				</form>
 			</div>
 		</article>
 	</section>

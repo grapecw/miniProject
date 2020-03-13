@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +23,7 @@ import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.ProductReviewDAO;
+import vo.LoginVO;
 import vo.ProdReviewVO;
 import vo.ProdVO;
 
@@ -57,7 +59,6 @@ public class HomeController {
 	public ModelAndView uploadboard() {
 		ModelAndView mav = new ModelAndView();
 		
-		mav.addObject("list", dao.listAll(11111));
 		mav.setViewName("uploadboard");
 
 		return mav;
@@ -84,31 +85,38 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
-	public String boardWrite() {
-	  return "boardWrite";
+	public ModelAndView boardWrite(String prodID) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("prodID",prodID);
+		mav.setViewName("boardWrite");
+		return mav;
 	}
 	
 	@RequestMapping(value = "/viewReview", method = RequestMethod.GET)
-	public ModelAndView boardWrite(int reViewID) {
+	public ModelAndView boardWrite(int reViewID, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 	
 		mav.addObject("item", dao.selectOne(reViewID));
 		mav.setViewName("viewReview");
-		
+		System.out.print("22222:"+session.getAttribute("sessionId"));
 		return mav;
 	}
 	
 	@RequestMapping(value = "/write1", method = RequestMethod.POST)
-	public ModelAndView upboardWrite(ProdReviewVO vo) {
-		
+	public ModelAndView upboardWrite(ProdReviewVO vo,HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+		LoginVO login=(LoginVO) (session.getAttribute("login"));
+		System.out.print(login.getIDCord());
+		vo.setIDCord(login.getIDCord());
+		vo.setNickName(login.getNickName());
+		vo.setIDEmail(login.getIDEmail());
 		boolean result = dao.insert(vo);
 		if (result)
 			System.out.println("성공");
 		else
 			System.out.println("실패");
 		
-		mav.setViewName("uploadboard");
+		mav.setViewName("uploadboard/"+vo.getProdID());
 		System.out.print(vo.getViewContenxt());
 		return mav;
 	}

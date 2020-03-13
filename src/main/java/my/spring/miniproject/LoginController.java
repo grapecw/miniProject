@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 
 import bo.NaverLoginBO;
+import vo.LoginVO;
 
 /**
  * Handles requests for the application home page.
@@ -65,12 +66,20 @@ public class LoginController {
 		JSONObject response_obj = (JSONObject) jsonObj.get("response");
 //response의 nickname값 파싱
 		String nickname = (String) response_obj.get("nickname");
-
 //4.파싱 닉네임 세션으로 저장
-		session.setAttribute("sessionId", nickname); // 세션 생성
-		System.out.print("111111:"+session.getAttribute("sessionId"));
+		LoginVO login = new LoginVO();
+		
+		login.setIDCord(Integer.parseInt(((String) response_obj.get("id"))));
+		login.setIDEmail( (String) response_obj.get("email"));
+		login.setNickName( (String) response_obj.get("nickname"));
+		login.setSex((String) response_obj.get("gender"));
+		
+		System.out.print(login.getNickName()+login.getIDEmail()+login.getIDCord()+login.getSex());
+		
+		session.setAttribute("login", login); // 세션 생성
+//		System.out.print("111111:"+session.getAttribute("sessionId"));
 		model.addAttribute("result", apiResult);
-		System.out.print((String) response_obj.get("id"));
+//		System.out.print((String) response_obj.get("id"));
 		return "login";
 	}
 

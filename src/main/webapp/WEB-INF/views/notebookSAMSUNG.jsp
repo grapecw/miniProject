@@ -205,55 +205,67 @@ h1{text-align:center;}
 
 <body id="page-top" class="masthead">
 
-  <!-- Navigation -->
-
-	<nav class="navbar navbar-expand-lg navbar-light fixed-top"
-		id="mainNav">
-		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="/miniproject">logo-home
-				button</a>
-			<button class="navbar-toggler navbar-toggler-right" type="button"
-				data-toggle="collapse" data-target="#navbarResponsive"
-				aria-controls="navbarResponsive" aria-expanded="false"
-				aria-label="Toggle navigation">
-				Menu <i class="fas fa-bars"></i>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="/miniproject/notebookMenu">Notebook</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="/miniproject/tabletMenu">Tablet</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="/miniproject/phoneMenu">Phone</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="/miniproject/elseMenu">Else</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="#signup"> <img
-							src="/miniproject/resources/img/login.png" width="20px"
-							height="20px" class="icon"></a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="#signup"> <img
-							src="/miniproject/resources/img/logout.png" width="20px"
-							height="20px" class="icon"></a></li>
-
-				</ul>
-			</div>
-		</div>
-	</nav>
+<%@include file="./navbar.jsp"%>
 
   <!-- Header -->
-<!-- <header > -->
 <section id="partout" style="margin-top : 200px;">
 
 <div class="wrap">
 	<div class="col-1-4">
     	<div class="show show-first">
-      	<img src="/miniproject/resources/img/GRAM1.jpg" width="300px" height="300px" />
+      	<img src="/miniproject/resources/img/NT950QCT-A58A_1.jpg" width="300px" height="300px" />
       
 	      <div class="mask">
-        	<h2>LG Gram</h2>
-        	<p class="price">LG Gram 17인치</p>
+        	<h2>삼성 갤럭시북 플렉스</h2>
+        	<p class="price">삼성 갤럭시북 플렉스<br>NT950QCT-A58A</p>
+        	<a href="uploadboard/NT950QCT-A58A" class="more">More info</a>
+      	</div>
+    	</div>
+  	</div>
+  	
+  	<div class="col-1-4">
+    	<div class="show show-first">
+      	<img src="/miniproject/resources/img/NT950XCJ-X59_1.jpg" width="300px" height="300px" />
+      
+	      <div class="mask">
+        	<h2>삼성 갤럭시북 이온</h2>
+        	<p class="price">삼성 갤럭시북 이온<br>NT950XCJ-X59</p>
+        	<a href="#" class="more">More info</a>
+      	</div>
+    	</div>
+  	</div>
+  	
+  	<div class="col-1-4">
+    	<div class="show show-first">
+      	<img src="/miniproject/resources/img/NT340XAZ-AD1A_1.jpg" width="300px" height="300px" />
+      
+	      <div class="mask">
+        	<h2>삼성전자 노트북 3</h2>
+        	<p class="price">삼성전자 노트북 3<br>NT340XAZ-AD1A</p>
+        	<a href="#" class="more">More info</a>
+      	</div>
+    	</div>
+  	</div>
+  	
+  	<div class="col-1-4">
+    	<div class="show show-first">
+      	<img src="/miniproject/resources/img/NT500R5Z-K78A_1.jpg" width="300px" height="300px" />
+      
+	      <div class="mask">
+        	<h2>삼성전자 노트북 5</h2>
+        	<p class="price">삼성전자 노트북 5<br>NT500R5Z-K78A</p>
+        	<a href="#" class="more">More info</a>
+      	</div>
+    	</div>
+  	</div>
+  	
+  	<div class="col-1-4">
+    	<div class="show show-first">
+      	<img src="/miniproject/resources/img/NT950QCG-X716A_1.jpg" width="300px" height="300px" />
+      
+	      <div class="mask">
+        	<h2>삼성 갤럭시북 플렉스</h2>
+        	<p class="price">삼성 갤럭시북 플렉스<br>NT950QCG-X716A</p>
         	<a href="#" class="more">More info</a>
       	</div>
     	</div>

@@ -24,10 +24,12 @@
 					href="/miniproject/phoneMenu">Phone</a></li>
 				<li class="nav-item"><a class="nav-link js-scroll-trigger"
 					href="/miniproject/elseMenu">Else</a></li>
+				<li class="nav-item"><a class="nav-link js-scroll-trigger"
+					href="/miniproject/talkboard">Talk</a></li>
 
 			<c:choose>
 			
-			<c:when test="${!empty sessionScope.sessionId}">
+			<c:when test="${!empty sessionScope.login}">
 				<li class="nav-item"><a class="nav-link js-scroll-trigger"
 					href="/miniproject/logout"> 
 					<img src="/miniproject/resources/img/login.png" width="20px"
@@ -41,7 +43,7 @@
 				<li class="nav-item"><a class="nav-link js-scroll-trigger"
 					onclick='window.open("/miniproject/login","_blank","height=500,width=500, status=yes,toolbar=no,menubar=no,location=no");return false'> 
 					<img src="/miniproject/resources/img/logout.png"
-						width="20px" height="20px"></a></li>
+						style ="width:20px; height:20px"></a></li>
 			</c:otherwise>
 			</c:choose>
 			

@@ -5,7 +5,7 @@
 <mapper namespace="resource.prodReviewMapper">
 	 
  	<select id="selectReview"  resultType="vo.ProdReviewVO" parameterType="_int">
- 		select reViewID, IDCord, NickName, IDEmail, prodID, viewTitle, to_char(ViewDate,'yyyy"년" mm"월" dd"일"') AS ViewDate, ViewContenxt, Viewcnt, ViewUpCnt, ViewImg, ViewStar, ViewPoice
+ 		select reViewID, IDCord, NickName, IDEmail, prodID, viewTitle, to_char(ViewDate,'yyyy"년" mm"월" dd"일"') AS ViewDate, ViewContenxt, Viewcnt, ViewUpCnt, ViewImg, ViewStar, ViewPoice, oneline
 		from prodReview
 		where reViewID=#{id}
  	</select>
@@ -25,9 +25,9 @@
 			SELECT prodreview_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 		insert into prodReview 
-			(reViewID, IDCord, NickName, IDEmail, prodID, viewTitle, ViewDate, ViewContenxt, Viewcnt, ViewUpCnt, ViewImg, ViewStar, ViewPoice) 
+			(reViewID, IDCord, NickName, IDEmail, prodID, viewTitle, ViewDate, ViewContenxt, Viewcnt, ViewUpCnt, ViewImg, ViewStar, ViewPoice, oneline) 
 		values 
-			(#{reViewID}, #{IDCord}, #{NickName}, #{IDEmail}, #{prodID}, #{viewTitle}, Sysdate, #{ViewContenxt}, #{Viewcnt}, #{ViewUpCnt}, #{ViewImg}, #{ViewStar}, #{ViewPoice})
+			(#{reViewID}, #{IDCord}, #{NickName}, #{IDEmail}, #{prodID}, #{viewTitle}, Sysdate, #{ViewContenxt}, #{Viewcnt}, #{ViewUpCnt}, #{ViewImg}, #{ViewStar}, #{ViewPoice},#{oneline})
 	</insert>
  	
  	<!-- 리뷰를 삭제하는 부분 -->
