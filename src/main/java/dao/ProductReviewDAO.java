@@ -10,28 +10,29 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import vo.ProdReviewVO;
+import vo.StarSelectVO;
 
 @Repository
 public class ProductReviewDAO {
-	
+
 	@Autowired
 	SqlSession session = null;
-	
+
 	public ProdReviewVO selectOne(int id) {
 		// TODO Auto-generated method stub
 		System.out.println("Mybatis 를 사용 DB 연동-selectOne");
-		
+
 		String statement = "resource.prodReviewMapper.selectReview";
-	
+
 		ProdReviewVO searchOne = session.selectOne(statement, id);
-		
+
 //		searchOne.setCnt(searchOne.getCnt()+1);
 //		statement = "resource.NewsMapper.updateViews";
 //		session.update(statement,searchOne);
-		
+
 		return searchOne;
 	}
-	
+
 	public boolean insert(ProdReviewVO vo) {
 		// TODO Auto-generated method stub
 		System.out.println("Mybatis 를 사용 DB 연동-insert ");
@@ -47,20 +48,45 @@ public class ProductReviewDAO {
 
 		return result;
 	}
-	
-	public List<ProdReviewVO> listAll(String prodID) {
-	// TODO Auto-generated method stub
-	System.out.println("Mybatis 를 사용 DB 연동-listAll ");
-	
-	List<ProdReviewVO> list = new ArrayList<ProdReviewVO>();
-	String statement = "resource.prodReviewMapper.selectReviewList";
-	System.out.println(prodID);
-	list = session.selectList(statement, prodID);
 
-	System.out.println(session.getClass().getName());
-	return list;
-}
-	
+	public List<ProdReviewVO> listAll(String prodID) {
+		// TODO Auto-generated method stub
+		System.out.println("Mybatis 를 사용 DB 연동-listAll ");
+
+		List<ProdReviewVO> list = new ArrayList<ProdReviewVO>();
+		String statement = "resource.prodReviewMapper.selectReviewList";
+		System.out.println(prodID);
+		list = session.selectList(statement, prodID);
+
+		System.out.println(session.getClass().getName());
+		return list;
+	}
+
+	public List<StarSelectVO> selectStar(String prodID) {
+		System.out.println("Mybatis 를 사용 DB 연동-selectStar ");
+
+		List<StarSelectVO> list = new ArrayList<StarSelectVO>();
+		String statement = "resource.prodReviewMapper.selectReviewstar";
+		System.out.println(prodID);
+		list = session.selectList(statement, prodID);
+
+		System.out.println(session.getClass().getName());
+		return list;
+	}
+
+	public boolean delete(int reViewID) {
+		// TODO Auto-generated method stub
+
+		System.out.println("Mybatis 를 사용 DB 연동-delete ");
+		boolean result = false;
+
+		String statement = "resource.prodReviewMapper.deleteReview";
+		if (session.insert(statement, reViewID) == 1)
+			result = true;
+
+		return result;
+	}
+
 //	public boolean insert(NewsVO vo) {
 //		// TODO Auto-generated method stub
 //
@@ -178,6 +204,5 @@ public class ProductReviewDAO {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
-
 
 }

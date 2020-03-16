@@ -161,6 +161,15 @@
          					</c:otherwise> 
       					</c:choose> 
 					</c:forEach>
+					<br>
+					<br>
+
+					<c:if test="${!empty sessionScope.login}">
+						<c:if test="${sessionScope.login.IDCord == item.idCord}">
+						<button onclick="location.href='/miniproject/viewReview/update?reViewID=${item.reViewID }'"> 수정 </button>
+						<button onclick="location.href='/miniproject/viewReview/delete?reViewID=${item.reViewID }'"> 삭제 </button>
+						</c:if> 
+					</c:if>
 				</div>
 			</div>
 		</div>

@@ -2,107 +2,137 @@ package vo;
 
 public class ProdReviewVO {
 	private int reViewID;
-	private int IDCord;
-	private String NickName;
-	private String IDEmail;
+	private int idCord;
+	private String nickName;
+	private String idEmail;
 	private String prodID;
 	private String viewTitle;
-	private String ViewDate;
-	private String ViewContenxt;
+	private String viewDate;
+	private String viewContenxt;
 	private String oneline;
-	private int Viewcnt;
-	private int ViewUpCnt;
-	private String ViewImg;
-	private int ViewStar;
-	private int ViewPoice;
-	
-	ProdReviewVO () {
-		IDCord=1111;
-		IDEmail="111";
-		prodID="11111";
-		NickName="11111";
-		Viewcnt = 0;
-		ViewUpCnt = 0;
-		ViewPoice = 0;
+	private int viewcnt;
+	private int viewUpCnt;
+	private String viewImg;
+	private int viewStar;
+	private int viewPoice;
+
+	ProdReviewVO() {
+		viewcnt = 0;
+		viewUpCnt = 0;
+		viewPoice = 0;
 	}
-	
+
 	public int getReViewID() {
-		
 		return reViewID;
 	}
+
 	public void setReViewID(int reViewID) {
 		this.reViewID = reViewID;
 	}
-	public int getIDCord() {
-		return IDCord;
+
+	public int getIdCord() {
+		return idCord;
 	}
-	public void setIDCord(int iDCord) {
-		IDCord = iDCord;
+
+	public void setIdCord(int idCord) {
+		this.idCord = idCord;
 	}
+
 	public String getNickName() {
-		return NickName;
+		return nickName;
 	}
+
 	public void setNickName(String nickName) {
-		NickName = nickName;
+		this.nickName = nickName;
 	}
-	public String getIDEmail() {
-		return IDEmail;
+
+	public String getIdEmail() {
+		return idEmail;
 	}
-	public void setIDEmail(String iDEmail) {
-		IDEmail = iDEmail;
+
+	public void setIdEmail(String idEmail) {
+		this.idEmail = idEmail;
 	}
+
 	public String getProdID() {
 		return prodID;
 	}
+
 	public void setProdID(String prodID) {
 		this.prodID = prodID;
 	}
+
 	public String getViewTitle() {
 		return viewTitle;
 	}
+
 	public void setViewTitle(String viewTitle) {
 		this.viewTitle = viewTitle;
 	}
+
 	public String getViewDate() {
-		return ViewDate;
+		return viewDate;
 	}
+
 	public void setViewDate(String viewDate) {
-		ViewDate = viewDate;
+		this.viewDate = viewDate;
 	}
+
 	public String getViewContenxt() {
-		return ViewContenxt;
+		return viewContenxt;
 	}
+
 	public void setViewContenxt(String viewContenxt) {
-		ViewContenxt = viewContenxt;
+		this.viewContenxt = viewContenxt;
 	}
+
+	public String getOneline() {
+		return oneline;
+	}
+
+	public void setOneline(String oneline) {
+		this.oneline = oneline;
+	}
+
 	public int getViewcnt() {
-		return Viewcnt;
+		return viewcnt;
 	}
+
 	public void setViewcnt(int viewcnt) {
-		Viewcnt = viewcnt;
+		this.viewcnt = viewcnt;
 	}
+
 	public int getViewUpCnt() {
-		return ViewUpCnt;
+		return viewUpCnt;
 	}
+
 	public void setViewUpCnt(int viewUpCnt) {
-		ViewUpCnt = viewUpCnt;
+		this.viewUpCnt = viewUpCnt;
 	}
+
 	public String getViewImg() {
-		return ViewImg;
+		return viewImg;
 	}
+
 	public void setViewImg(String viewImg) {
-		ViewImg = viewImg;
+		this.viewImg = viewImg;
 	}
+
 	public int getViewStar() {
-		return ViewStar;
+		return viewStar;
 	}
+
 	public void setViewStar(int viewStar) {
-		ViewStar = viewStar;
+		this.viewStar = viewStar;
 	}
+
 	public int getViewPoice() {
-		return ViewPoice;
+		return viewPoice;
 	}
+
 	public void setViewPoice(int viewPoice) {
-		ViewPoice = viewPoice;
+		this.viewPoice = viewPoice;
 	}
+
+	
 }

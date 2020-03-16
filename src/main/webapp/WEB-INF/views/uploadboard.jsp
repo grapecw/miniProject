@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"
 	import="java.util.List, java.util.ArrayList,vo.ProdVO"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -33,7 +34,8 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/lightbox.css"
 	rel="stylesheet" />
-	
+
+<link href="https://fonts.googleapis.com/css?family=Gamja+Flower&display=swap" rel="stylesheet">
 
 <style>
 .prodimg {
@@ -98,6 +100,7 @@ h2 a {
 	font-size: 1.1em;
 	text-align: center;
 	color: #185875;
+	margin : 0px;
 }
 
 .container1 td {
@@ -119,8 +122,8 @@ h2 a {
 
 .container1 td, .container1 th {
 	padding-bottom: 2%;
-	padding-top: 2%;
-	padding-left: 2%;
+	padding-top: 1.5%;
+	padding-left: 1.5%;
 }
 
 /* Background-color of the odd rows */
@@ -185,25 +188,27 @@ h2 a {
 
 #oneLine {
 	width: 50%;
+	color : #ffcc66;
 	float: right;
 	box-sizing: border-box;
-	background: #0ff;
+	background: #234794;
 }
 
 #prodboard {
-	background: #f5f5f5;
-	border-collapse: separate;
+	/* background: #f5f5f5; */
+	/* border-collapse: separate; */
 	box-shadow: inset 0 1px 0 #fff;
 	font-size: 12px;
 	line-height: 24px;
 	margin: 30px auto;
 	text-align: left;
 	width: 800px;
+	background-color: antiquewhite;
 }
 
 #prodboard th {
 	background: url(https://jackrugile.com/images/misc/noise-diagonal.png),
-		linear-gradient(#777, #444);
+		linear-gradient(#333399, #666699);
 	border-left: 1px solid #555;
 	border-right: 1px solid #777;
 	border-top: 1px solid #555;
@@ -397,46 +402,37 @@ body {
   background-color: #FF8B5A;
 }
 
-
+p{
+  text-align: center;
+  font-size:2rem;
+  color:#cccccc;
+}
+.trans--grow{
+  -webkit-transition: width 1s ease-out; /* For Safari 3.1 to 6.0 */
+  transition: width 1s  ease-out;
+  width : 0%;
+}
+.grow{
+  width:100%;
+}
+.hr1{
+  margin-left:0;
+}
+.hr2{
+  margin-right:0;
+}
+hr{
+  margin-top: 20px;
+  padding: 2px 0;
+  border: none;
+  background-color: rgb(250, 150, 0);
+  letter-spacing: 5px;
+}
 
 </style>
 <body id="page-top" class="masthead">
 
-	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-light fixed-top"
-		id="mainNav">
-		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="/miniproject">logo-home
-				button</a>
-			<button class="navbar-toggler navbar-toggler-right" type="button"
-				data-toggle="collapse" data-target="#navbarResponsive"
-				aria-controls="navbarResponsive" aria-expanded="false"
-				aria-label="Toggle navigation">
-				Menu <i class="fas fa-bars"></i>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="/miniproject/notebookMenu">Notebook</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="/miniproject/tabletMenu">Tablet</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="/miniproject/phoneMenu">Phone</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="/miniproject/elseMenu">Else</a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="#signup"> <img
-							src="/miniproject/resources/img/login.png" width="20px"
-							height="20px"></a></li>
-					<li class="nav-item"><a class="nav-link js-scroll-trigger"
-						href="#signup"> <img
-							src="/miniproject/resources/img/logout.png" width="20px"
-							height="20px"></a></li>
-
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<%@include file="./navbar.jsp"%>
 
 	<section id="projects" class="projects-section">
 		<article
@@ -448,28 +444,36 @@ body {
 			
 			<%= posting.getViewTitle() %>
 			--%>
-			<hr>
-			
+  				<p> ${ requestScope.prod.PName } </p>
+			<hr class="trans--grow hr2">
+<%-- 			<hr>
+			 <p style="color:wheat;font-size:55px;text-align:Left; margin-left:50px;">${ requestScope.prod.PName }</p>
+			<hr> --%>
+			<br>
 			<div id="imgarea">
-				<a href="/miniproject/resources/img/1.png" data-lightbox="image-1"
+			<c:forEach begin="1" end="4" step="1" varStatus="status">
+    			<a href="/miniproject/resources/img/${ requestScope.prod.prodID }_${status.index}.jpg" data-lightbox="image-1"
+					data-title="${ requestScope.prod.prodID }">
+					<img class="prodimg" src="/miniproject/resources/img/${ requestScope.prod.prodID }_${status.index}.jpg" style="width: 20%">
+				</a> 
+			</c:forEach>
+				
+<!-- 				<a href="/miniproject/resources/img/1.png" data-lightbox="image-1"
 					data-title="My caption"><img class="prodimg"
 					src="/miniproject/resources/img/1.png" style="width: 20%"></a> <a
 					href="/miniproject/resources/img/1.png" data-lightbox="image-1"
 					data-title="My caption"><img class="prodimg"
-					src="/miniproject/resources/img/1.png" style="width: 20%"></a> <a
-					href="/miniproject/resources/img/1.png" data-lightbox="image-1"
-					data-title="My caption"><img class="prodimg"
-					src="/miniproject/resources/img/1.png" style="width: 20%"></a>
+					src="/miniproject/resources/img/1.png" style="width: 20%"></a> -->
 			</div>
-			${ requestScope.prod.prodID }
-			${ requestScope.prod.PName }
+<%-- 			${ requestScope.prod.prodID }
+			${ requestScope.prod.PName } --%>
+			<br>
 			<% ProdVO vo = (ProdVO)request.getAttribute("prod"); %>
 			<div id="spectable">
-				제품 사향
 				<table class="container1">
 					<thead>
 						<tr style = "line-height: 3.5rem;">
-							<th><h1>Function</h1></th>
+							<th style="padding-right: 7px;"><h1>Function</h1></th>
 							<th><h1>Detail</h1></th>
 						</tr>
 					</thead>
@@ -589,7 +593,7 @@ body {
 				<div id="starPoint"><div class="container2">
   <div class="inner">
     <div class="rating">
-      <span class="rating-num">4.8</span>
+      <span class="rating-num"><fmt:formatNumber value="${ staravg }" pattern=".0"/></span>
       <div class="rating-stars">
         <span><i class="active icon icon-material-star-rate"></i></span>
         <span><i class="active icon-star"></i></span>
@@ -598,7 +602,7 @@ body {
         <span><i class="icon-star"></i></span>
       </div>
       <div class="rating-users">
-        <i class="icon-user"></i> 1,014,004 total
+        <i class="icon-user"></i> ${ starcount } total
       </div>
     </div>
     
@@ -608,7 +612,7 @@ body {
           <i class="active icon-star"></i> 5           </span>
         <span class="bar-block">
           <span id="bar-five" class="bar">
-            <span>566,784</span>&nbsp;
+            <span>${ starlist[4] }</span>&nbsp;
           </span> 
         </span>
       </div>
@@ -618,7 +622,7 @@ body {
           <i class="active icon-star"></i> 4           </span>
         <span class="bar-block">
           <span id="bar-four" class="bar">
-            <span>171,298</span>&nbsp;
+            <span>${ starlist[3] }</span>&nbsp;
           </span> 
         </span>
       </div> 
@@ -628,7 +632,7 @@ body {
           <i class="active icon-star"></i> 3           </span>
         <span class="bar-block">
           <span id="bar-three" class="bar">
-            <span>94,940</span>&nbsp;
+            <span>${ starlist[2] }</span>&nbsp;
           </span> 
         </span>
       </div>
@@ -638,7 +642,7 @@ body {
           <i class="active icon-star"></i> 2           </span>
         <span class="bar-block">
           <span id="bar-two" class="bar">
-            <span>44,525</span>&nbsp;
+            <span>${ starlist[1] }</span>&nbsp;
           </span> 
         </span>
       </div>
@@ -648,7 +652,7 @@ body {
           <i class="active icon-star"></i> 1           </span>
         <span class="bar-block">
           <span id="bar-one" class="bar">
-            <span>136,457</span>&nbsp;
+            <span>${ starlist[0] }</span>&nbsp;
           </span> 
         </span>
       </div>
@@ -656,15 +660,17 @@ body {
   </div>
 </div></div>
 				
-				<div id="oneLine" style="height: 167px;"><%= vo.getPPlain() %></div>
+				<div id="oneLine" style="height: 167px;">
+				<table style = "width : 100% ; height : 100%"><tr><td><%= vo.getPPlain() %></td></tr></table></div>
 				
 			</div>
-
+			<br>
+			<br>
 			<div>
 				<table id="prodboard">
 					<thead>
-						<tr>
-							<th>제목</th>
+						<tr style="text-align:center">
+							<th colspan="2">제목</th>
 							<th>닉네임</th>
 							<th>업로드 날짜</th>
 						</tr>
@@ -672,17 +678,20 @@ body {
 					<tbody>
 						<c:forEach var="item" items="${requestScope.list }">
 						<tr>
-							<td onclick="location.href='/miniproject/viewReview?reViewID=${item.reViewID}&Pname=${ requestScope.prod.PName }'">${item.viewTitle}</td>
-							<td>${item.nickName}</td>
-							<td>${item.viewDate}</td>
+							<td width="10%" style="text-align:center">${item.reViewID}</td>
+							<td onclick="location.href='/miniproject/viewReview?reViewID=${item.reViewID}&Pname=${ requestScope.prod.PName }'" width="55%">${item.viewTitle}</td>
+							<td style="text-align:center" width="15%">${item.nickName}</td>
+							<td style="text-align:center" width="20%">${item.viewDate}</td>
 						</tr>
 						</c:forEach>
 					</tbody>
 				</table>
+				<c:if test="${!empty sessionScope.login}">
 				<form method = "get" action = "/miniproject/write" id="colwrite">
 					<input type="hidden" name="prodID" value="${ requestScope.prod.prodID }">
 					<input type="submit" value="글쓰기" > 
 				</form>
+				</c:if>
 			</div>
 		</article>
 	</section>
@@ -708,5 +717,6 @@ body {
 	<!-- Custom scripts for this template -->
 	<script src="<c:url value="/resources/js/lightbox.js" />"></script>
 	<script src="<c:url value="/resources/js/grayscale.js" />"></script>
+	 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" ></script>
 </body>
 </html>

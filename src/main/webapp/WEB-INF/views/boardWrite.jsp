@@ -358,16 +358,17 @@ body {
 						<input name="oneline" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" 
 						 placeholder="한줄 평" required/>
 						<div class="rating" style="max-width: 115px;">
-							<input type="radio" name="ViewStar" value=1 id="r1"> 
-							<label for="r1"></label> 
-							<input type="radio" name="ViewStar" value=2 id="r2"> 
-							<label for="r2"></label> 
-							<input type="radio" name="ViewStar" value=3 id="r3"> 
-							<label for="r3"></label>
-							<input type="radio" name="ViewStar" value=4 id="r4">
-							<label for="r4"></label> 
 							<input type="radio" name="ViewStar" value=5 id="r5"> 
 							<label for="r5"></label>
+							<input type="radio" name="ViewStar" value=4 id="r4">
+							<label for="r4"></label> 
+							<input type="radio" name="ViewStar" value=3 id="r3"> 
+							<label for="r3"></label>
+							<input type="radio" name="ViewStar" value=2 id="r2"> 
+							<label for="r2"></label> 
+							<input type="radio" name="ViewStar" value=1 id="r1"> 
+							<label for="r1"></label> 
+
 						</div>
 						<input type="hidden" name="prodID" value="${ requestScope.prodID }">
 						<br>

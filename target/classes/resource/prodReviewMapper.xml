@@ -29,6 +29,25 @@
 		values 
 			(#{reViewID}, #{IDCord}, #{NickName}, #{IDEmail}, #{prodID}, #{viewTitle}, Sysdate, #{ViewContenxt}, #{Viewcnt}, #{ViewUpCnt}, #{ViewImg}, #{ViewStar}, #{ViewPoice},#{oneline})
 	</insert>
+	
+	<select id="selectReviewstar"  resultType="vo.StarSelectVO" parameterType="string">
+ 		select VIEWSTAR,COUNT(*) AS counting 
+		from prodreview 
+		where prodID = #{prodID}
+		GROUP by VIEWSTAR
+		order by VIEWSTAR
+ 	</select>
+ 	
+ 	<select id="selectAvgStar"  resultType="_int" parameterType="string">
+ 		select avg(VIEWSTAR) AS avg
+		from prodreview 
+		where prodID = #{prodID}
+ 	</select>
+ 	
+ 	<delete id="deleteReview" parameterType="_int" >
+ 		delete from prodReview
+ 		where reViewID=#{reViewID}
+	</delete>
  	
  	<!-- 리뷰를 삭제하는 부분 -->
  	<!-- 

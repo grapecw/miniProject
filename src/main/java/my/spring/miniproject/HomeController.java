@@ -32,9 +32,6 @@ import vo.ProdVO;
  */
 @Controller
 public class HomeController {
-	
-	@Autowired
-	ProductReviewDAO dao = null;
 
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -84,79 +81,6 @@ public class HomeController {
 		return "insertProd";
 	}
 	
-	@RequestMapping(value = "/write", method = RequestMethod.GET)
-	public ModelAndView boardWrite(String prodID) {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("prodID",prodID);
-		mav.setViewName("boardWrite");
-		return mav;
-	}
 	
-	@RequestMapping(value = "/viewReview", method = RequestMethod.GET)
-	public ModelAndView boardWrite(int reViewID, HttpSession session, String Pname) {
-		ModelAndView mav = new ModelAndView();
-		System.out.print( Pname);
-		mav.addObject("Pname", Pname);
-		mav.addObject("item", dao.selectOne(reViewID));
-		mav.setViewName("viewReview");
-
-		return mav;
-	}
-	
-	@RequestMapping(value = "/write1", method = RequestMethod.POST)
-	public String upboardWrite(ProdReviewVO vo,HttpSession session,int ViewStar) {
-		ModelAndView mav = new ModelAndView();
-		LoginVO login=(LoginVO) (session.getAttribute("login"));
-//		System.out.print(login.getIDCord()+"\t"+ViewStar);
-		vo.setIDCord(login.getIDCord());
-		vo.setNickName(login.getNickName());
-		vo.setIDEmail(login.getIDEmail());
-		vo.setViewStar(ViewStar);
-//		System.out.print(vo.getViewStar());
-		boolean result = dao.insert(vo);
-		if (result)
-			System.out.println("성공");
-		else
-			System.out.println("실패");
-		
-		mav.setViewName(("uploadboard/"+vo.getProdID()));
-		System.out.print(vo.getViewContenxt());
-		return "redirect:uploadboard/"+vo.getProdID();
-	}
-	
-	@Autowired
-	ServletContext context; 
-	
-	@RequestMapping(value = "/image", produces = "text/plain; charset=utf-8")
-	@ResponseBody
-	public String saveFile(MultipartRequest mreq) {
-
-		String fileInfo=null;
-		ModelAndView mav = new ModelAndView();
-		List<MultipartFile> list = mreq.getFiles("file");
-		String resultStr = "";
-		mav.setViewName("boardWrite");
-
-		for (MultipartFile mfile : list) {
-
-			String fileName = mfile.getOriginalFilename();
-			try {
-
-				fileInfo = context.getRealPath("/") + "resources/img/"+fileName;
-				File f = new File(fileInfo);
-				System.out.println(fileInfo);
-				if (f.exists()) {
-					resultStr = "/miniproject/resources/img/"+fileName;
-				} else {
-					mfile.transferTo(new File(fileInfo));
-					resultStr = "/miniproject/resources/img/"+fileName;
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-	
-			}
-		}
-		return resultStr;
-	}
 	
 }

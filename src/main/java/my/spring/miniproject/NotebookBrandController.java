@@ -1,5 +1,6 @@
 package my.spring.miniproject;
 
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import dao.ProductDAO;
 import dao.ProductReviewDAO;
 import vo.ProdVO;
+import vo.StarSelectVO;
 
 /**
  * Handles requests for the application home page.
@@ -54,8 +56,27 @@ public class NotebookBrandController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("prod", dao.selectOne(prodID));
 		mav.addObject("list", redao.listAll(prodID));
-		mav.setViewName("uploadboard");
 		
+		List<StarSelectVO> alphalist = redao.selectStar(prodID);
+		
+		int[] starlist = {0,0,0,0,0};
+		int starcount = 0;
+		float starsum = 0;
+		
+		for(int i=1;i<=5;i++) {
+			for(int j=0;j<alphalist.size();j++) {
+				if(alphalist.get(j).getViewStar()==i) {
+					starlist[i-1]=alphalist.get(j).getCounting();
+					starcount = starcount + alphalist.get(j).getCounting();
+				    starsum = starsum + alphalist.get(j).getViewStar()*alphalist.get(j).getCounting();
+				}
+			}
+		}
+		
+		mav.addObject("starlist",starlist);
+		mav.addObject("starcount",starcount);
+		mav.addObject("staravg",(starsum/starcount));
+		mav.setViewName("uploadboard");
 		return mav;
 	}
 	
