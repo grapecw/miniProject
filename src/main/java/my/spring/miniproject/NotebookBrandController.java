@@ -11,10 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.ProductDAO;
 import dao.ProductReviewDAO;
+import vo.PagingControl;
 import vo.ProdVO;
 import vo.StarSelectVO;
 
@@ -47,15 +49,20 @@ public class NotebookBrandController {
 		else
 			System.out.println("실패");
 
-		System.out.print(vo.getPName());
+		System.out.print(vo.getPname());
 		
 		return "prodBoard";
 	}
 	@RequestMapping(value = "/uploadboard/{prodID}")
-	public ModelAndView selectProd(@PathVariable String prodID) {
+	public ModelAndView selectProd(@RequestParam(value="pagenum", defaultValue="1")int pagenum,
+									@PathVariable String prodID) {
 		ModelAndView mav = new ModelAndView();
+		
+		PagingControl paging = new PagingControl(pagenum);
+		
 		mav.addObject("prod", dao.selectOne(prodID));
-		mav.addObject("list", redao.listAll(prodID));
+		mav.addObject("paging", paging);
+		mav.addObject("list", redao.listAll(prodID,paging));
 		
 		List<StarSelectVO> alphalist = redao.selectStar(prodID);
 		

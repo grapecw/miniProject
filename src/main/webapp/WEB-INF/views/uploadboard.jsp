@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
-	import="java.util.List, java.util.ArrayList,vo.ProdVO"%>
+	import="java.util.List, java.util.ArrayList, vo.ProdVO, vo.PagingControl"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -36,7 +36,7 @@
 	rel="stylesheet" />
 
 <link href="https://fonts.googleapis.com/css?family=Gamja+Flower&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
 <style>
 .prodimg {
 	transform: scale(1);
@@ -428,6 +428,10 @@ hr{
   background-color: rgb(250, 150, 0);
   letter-spacing: 5px;
 }
+.paging {
+	font-family: 'PT Sans', sans-serif;
+	color : white;
+}
 
 </style>
 <body id="page-top" class="masthead">
@@ -444,7 +448,7 @@ hr{
 			
 			<%= posting.getViewTitle() %>
 			--%>
-  				<p> ${ requestScope.prod.PName } </p>
+  				<p> ${ requestScope.prod.pname } </p>
 			<hr class="trans--grow hr2">
 <%-- 			<hr>
 			 <p style="color:wheat;font-size:55px;text-align:Left; margin-left:50px;">${ requestScope.prod.PName }</p>
@@ -661,7 +665,7 @@ hr{
 </div></div>
 				
 				<div id="oneLine" style="height: 167px;">
-				<table style = "width : 100% ; height : 100%"><tr><td><%= vo.getPPlain() %></td></tr></table></div>
+				<table style = "width : 100% ; height : 100%"><tr><td><%= vo.getPplain() %></td></tr></table></div>
 				
 			</div>
 			<br>
@@ -687,8 +691,25 @@ hr{
 						</c:forEach>
 					</tbody>
 				</table>
+				<div class="paging">
+					<%
+						PagingControl paging = (PagingControl)request.getAttribute("paging");
+					%>
+	
+					<% if(paging.isPreData( )) { %>
+						<span onclick="location.href='/miniproject/uploadboard/${ requestScope.prod.prodID }?pagenum=<%=paging.getPageStart( ) - 1%>'">◀</span>
+					<%} %>
+	
+					<% for(int i=paging.getPageStart( );i<paging.getPageEnd( )+1;i++) {%>
+						<span onclick="location.href='/miniproject/uploadboard/${ requestScope.prod.prodID }?pagenum=<%=i%>'"> <%= i %> </span>
+					<% } %>
+	
+					<% if(paging.isNextData( )) {%>
+						<span onclick="location.href='/miniproject/uploadboard/${ requestScope.prod.prodID }?pagenum=<%=paging.getPageEnd( )+1%>'">▶</span>
+					<%} %>
+				</div>
 				<c:if test="${!empty sessionScope.login}">
-				<form method = "get" action = "/miniproject/write" id="colwrite">
+				<form method = "get" action = "/miniproject/write" id="colwrite" style= "margin-top: 30px;">
 					<input type="hidden" name="prodID" value="${ requestScope.prod.prodID }">
 					<input type="submit" value="글쓰기" > 
 				</form>

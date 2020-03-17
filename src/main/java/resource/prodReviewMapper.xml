@@ -10,12 +10,21 @@
 		where reViewID=#{id}
  	</select>
  	
+ 	<select id="selectReviewCount"  resultType="int">
+ 		select max(rownum)
+		from prodReview
+		where prodID=#{prodID}
+ 	</select>
+ 	
  	<!-- 물품에 들어가면 그 물품에 대한 리뷰의 갯수 출력 -->
 
- 	<select id="selectReviewList"  resultType="vo.ProdReviewVO" parameterType="string">
+ 	<select id="selectReviewList"  resultType="vo.ProdReviewVO" parameterType="vo.FindReviewVO">
+ 	
  		select reViewID, NickName, viewTitle, to_char(ViewDate,'yyyy"년" mm"월" dd"일"') AS ViewDate, Viewcnt, ViewUpCnt, ViewStar
-		from prodReview
-		where prodID = #{prodID}
+        from 	(select reViewID, NickName, viewTitle, ViewDate, Viewcnt, ViewUpCnt, ViewStar, rownum rnum
+				from prodReview
+				where prodID =#{prodID})
+		where rnum between  10*#{pgNum}-9 and 10*#{pgNum}
  	</select>
 
  	
@@ -53,7 +62,7 @@
 	<!-- 리뷰 수정 -->
 	<update id="updateReview" parameterType="vo.ProdReviewVO" >
 		update prodReview
-		set viewTitle = #{viewTitle}, ViewContenxt = #{viewContenxt}, oneline = #{oneline}
+		set viewTitle = #{viewTitle}, ViewContenxt = #{viewContenxt}, oneline = #{oneline}, viewStar = #{viewStar}
 		where reViewID=#{reViewID}
 	</update>
  	

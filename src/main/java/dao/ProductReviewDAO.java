@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import vo.PagingControl;
+import vo.FindReviewVO;
 import vo.ProdReviewVO;
 import vo.StarSelectVO;
 
@@ -49,14 +51,22 @@ public class ProductReviewDAO {
 		return result;
 	}
 
-	public List<ProdReviewVO> listAll(String prodID) {
+	public List<ProdReviewVO> listAll(String prodID,PagingControl paging) {
 		// TODO Auto-generated method stub
 		System.out.println("Mybatis 를 사용 DB 연동-listAll ");
 
+		paging.postCnt = session.selectOne("resource.prodReviewMapper.selectReviewCount", prodID);
+		
+		FindReviewVO fpage = new FindReviewVO();
+		fpage.setPgNum(paging.getPgNum());
+		fpage.setProdID(prodID);
+		fpage.setPostCnt(paging.postCnt);
+		
 		List<ProdReviewVO> list = new ArrayList<ProdReviewVO>();
+		
 		String statement = "resource.prodReviewMapper.selectReviewList";
-		System.out.println(prodID);
-		list = session.selectList(statement, prodID);
+		System.out.println(fpage.pgNum);
+		list = session.selectList(statement, fpage);
 
 		System.out.println(session.getClass().getName());
 		return list;

@@ -89,14 +89,14 @@ public class NotebookMenuController {
 	}
 	
 	@RequestMapping(value = "/viewReview/updatetwo", method = RequestMethod.POST)
-	public String boardUpdatetwo(ProdReviewVO vo, HttpSession session, int ViewStar) {
+	public String boardUpdatetwo(ProdReviewVO vo, HttpSession session) {
 		LoginVO login = (LoginVO) (session.getAttribute("login"));
 //		System.out.print("????:"+vo.getProdID());
 //		System.out.print(login.getIDCord()+"\t"+ViewStar);
 		vo.setIdCord(login.getIDCord());
 		vo.setNickName(login.getNickName());
 		vo.setIdEmail(login.getIDEmail());
-		vo.setViewStar(ViewStar);
+		System.out.print(vo.getViewStar());
 //		System.out.print(vo.getViewStar());
 		boolean result = dao.update(vo);
 		if (result)
@@ -105,7 +105,7 @@ public class NotebookMenuController {
 			System.out.println("실패");
 //		System.out.print(prodao.selectOne(vo.getProdID()).getPName());
 //		System.out.print(vo.getViewContenxt());
-		return "redirect:/uploadboard/" + vo.getProdID();
+		return "redirect:/viewReview?reViewID=" + vo.getReViewID() + "&prodID=" + vo.getProdID();
 	}
 
 	@RequestMapping(value = "/viewReview/delete", method = RequestMethod.GET)
