@@ -86,6 +86,20 @@ public class ProductReviewDAO {
 
 		return result;
 	}
+	
+	public boolean update(ProdReviewVO vo) {
+		System.out.println("Mybatis 를 사용 DB 연동-update ");
+		boolean result = false;
+
+		// sql session 객체를 만들때 true를 준다.
+		// true를 준다는 것은 자동 commit 모드가 활성화 된다.
+		System.out.print("리뷰 아이디:"+vo.getReViewID());
+		String statement = "resource.prodReviewMapper.updateReview";
+		if (session.update(statement, vo) == 1)
+			result = true;
+		System.out.print(vo.getIdCord());
+		return result;
+	}
 
 //	public boolean insert(NewsVO vo) {
 //		// TODO Auto-generated method stub

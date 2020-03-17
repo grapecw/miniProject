@@ -179,6 +179,7 @@
 .about-section {
 	margin-top: 10rem;
 	padding-top: 2rem;
+	padding-bottom: 2rem;
 	background: linear-gradient(to bottom, #161616 0%, rgba(22, 22, 22, 0.9)
 		75%, rgba(22, 22, 22, 0.8) 100%);
 }
@@ -319,5 +320,5 @@ a:focus, a:hover {
 }
 
 footer {
-	padding: 5rem 0;
+	padding: 2.5rem 0;
 }

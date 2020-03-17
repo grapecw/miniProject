@@ -132,11 +132,11 @@
 	<%@include file="./navbar.jsp"%>
 
 	<!-- About Section -->
-	<section >
+	<section style="margin-bottom: 160px;">
 		<div class="container">
 			<div class="row">
 				<div id="about" class="about-section text-center col-lg-8 mx-auto ">
-					<p style="color: white; text-align: left; margin-left: 50px;"">${ requestScope.Pname }</p>
+					<p style="color: white; text-align: left; margin-left: 50px;"">${ prodvo.pname }</p>
 					<br>
 					<h2 class="text-white mb-4" style="margin: auto;">${item.viewTitle}</h2>
 					<p
@@ -150,6 +150,11 @@
 					<!-- <p class="text-white-50">Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
 					<a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p> -->
 					<hr style="margin: 0px; background-color: white;">
+					<%-- <div style="padding: 50px; padding-top: 10px;">
+						<p>
+							${item.oneline }
+						</p>
+					</div> --%>
 					<br><br>
 					<c:forEach begin="0" end="4" step="1" varStatus="status">
     					<c:choose>
@@ -168,6 +173,19 @@
 						<c:if test="${sessionScope.login.IDCord == item.idCord}">
 						<button onclick="location.href='/miniproject/viewReview/update?reViewID=${item.reViewID }'"> 수정 </button>
 						<button onclick="location.href='/miniproject/viewReview/delete?reViewID=${item.reViewID }'"> 삭제 </button>
+						<%-- <table style="margin: auto;">
+						<tr>
+							<td>
+								<form method="post" action="/miniproject/viewReview/update">
+									<input type="hidden" name="vo" value="${item} ">
+									<button> 수정 </button>
+								</form>
+							</td>
+							<td>
+								<button onclick="location.href='/miniproject/viewReview/delete?reViewID=${item.reViewID }'"> 삭제 </button>
+							</td>
+						</tr>
+						</table> --%>
 						</c:if> 
 					</c:if>
 				</div>

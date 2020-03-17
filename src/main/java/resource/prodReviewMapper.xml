@@ -25,9 +25,9 @@
 			SELECT prodreview_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 		insert into prodReview 
-			(reViewID, IDCord, NickName, IDEmail, prodID, viewTitle, ViewDate, ViewContenxt, Viewcnt, ViewUpCnt, ViewImg, ViewStar, ViewPoice, oneline) 
+			(reViewID, idCord, NickName, IDEmail, prodID, viewTitle, ViewDate, ViewContenxt, Viewcnt, ViewUpCnt, ViewImg, ViewStar, ViewPoice, oneline) 
 		values 
-			(#{reViewID}, #{IDCord}, #{NickName}, #{IDEmail}, #{prodID}, #{viewTitle}, Sysdate, #{ViewContenxt}, #{Viewcnt}, #{ViewUpCnt}, #{ViewImg}, #{ViewStar}, #{ViewPoice},#{oneline})
+			(#{reViewID}, #{idCord}, #{nickName}, #{idEmail}, #{prodID}, #{viewTitle}, Sysdate, #{viewContenxt}, #{viewcnt}, #{viewUpCnt}, #{viewImg}, #{viewStar}, #{viewPoice},#{oneline})
 	</insert>
 	
 	<select id="selectReviewstar"  resultType="vo.StarSelectVO" parameterType="string">
@@ -48,23 +48,14 @@
  		delete from prodReview
  		where reViewID=#{reViewID}
 	</delete>
- 	
- 	<!-- 리뷰를 삭제하는 부분 -->
- 	<!-- 
- 	<delete id="deleteReview" parameterType="_int" >
- 		delete from prodReview
- 		where reViewID=#{id}
-	</delete>
-	 -->
+ 
 	
 	<!-- 리뷰 수정 -->
-	<!-- 
 	<update id="updateReview" parameterType="vo.ProdReviewVO" >
 		update prodReview
-		set viewTitle = #{viewTitle}, ViewContenxt = #{ViewContenxt}
+		set viewTitle = #{viewTitle}, ViewContenxt = #{viewContenxt}, oneline = #{oneline}
 		where reViewID=#{reViewID}
 	</update>
- 	-->
  	
  	
  	

@@ -37,7 +37,7 @@ public class ProductDAO {
 		System.out.println("Mybatis 를 사용 DB 연동-selectOne");
 
 		String statement = "resource.prodMapper.selectOneProd";
-
+		System.out.print(id);
 		ProdVO searchOne = session.selectOne(statement, id);
 
 //	searchOne.setCnt(searchOne.getCnt()+1);

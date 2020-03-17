@@ -22,9 +22,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import dao.ProductDAO;
 import dao.ProductReviewDAO;
 import vo.LoginVO;
 import vo.ProdReviewVO;
+import vo.ProdVO;
 
 /**
  * Handles requests for the application home page.
@@ -34,6 +36,9 @@ public class NotebookMenuController {
 
 	@Autowired
 	ProductReviewDAO dao = null;
+	
+	@Autowired
+	ProductDAO prodao = null;
 
 	private static final Logger logger = LoggerFactory.getLogger(NotebookMenuController.class);
 
@@ -63,20 +68,50 @@ public class NotebookMenuController {
 	}
 
 	@RequestMapping(value = "/viewReview", method = RequestMethod.GET)
-	public ModelAndView boardWrite(int reViewID, HttpSession session, String Pname) {
+	public ModelAndView boardWrite(HttpSession session, int reViewID, String prodID) {
 		ModelAndView mav = new ModelAndView();
-		System.out.print(Pname);
-		mav.addObject("Pname", Pname);
+		ProdVO prodvo = prodao.selectOne(prodID);
+		mav.addObject("prodvo", prodvo);
 		mav.addObject("item", dao.selectOne(reViewID));
 		mav.setViewName("viewReview");
 
 		return mav;
 	}
+	
+	@RequestMapping(value = "/viewReview/update", method = RequestMethod.GET)
+	public ModelAndView boardUpdate(int reViewID, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("item", dao.selectOne(reViewID));
+		mav.setViewName("boardUpdate");
+		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/viewReview/updatetwo", method = RequestMethod.POST)
+	public String boardUpdatetwo(ProdReviewVO vo, HttpSession session, int ViewStar) {
+		LoginVO login = (LoginVO) (session.getAttribute("login"));
+//		System.out.print("????:"+vo.getProdID());
+//		System.out.print(login.getIDCord()+"\t"+ViewStar);
+		vo.setIdCord(login.getIDCord());
+		vo.setNickName(login.getNickName());
+		vo.setIdEmail(login.getIDEmail());
+		vo.setViewStar(ViewStar);
+//		System.out.print(vo.getViewStar());
+		boolean result = dao.update(vo);
+		if (result)
+			System.out.println("성공");
+		else
+			System.out.println("실패");
+//		System.out.print(prodao.selectOne(vo.getProdID()).getPName());
+//		System.out.print(vo.getViewContenxt());
+		return "redirect:/uploadboard/" + vo.getProdID();
+	}
 
 	@RequestMapping(value = "/viewReview/delete", method = RequestMethod.GET)
 	public String reViewDelete(int reViewID, HttpSession session) {
 
-		System.out.println("11111" + (LoginVO) (session.getAttribute("login")));
+//		System.out.println("11111" + (LoginVO) (session.getAttribute("login")));
 
 		ProdReviewVO vo = dao.selectOne(reViewID);
 		if (session.getAttribute("login") != null) {
@@ -96,7 +131,6 @@ public class NotebookMenuController {
 
 	@RequestMapping(value = "/write1", method = RequestMethod.POST)
 	public String upboardWrite(ProdReviewVO vo, HttpSession session, int ViewStar) {
-		ModelAndView mav = new ModelAndView();
 		LoginVO login = (LoginVO) (session.getAttribute("login"));
 //		System.out.print(login.getIDCord()+"\t"+ViewStar);
 		vo.setIdCord(login.getIDCord());
@@ -110,8 +144,7 @@ public class NotebookMenuController {
 		else
 			System.out.println("실패");
 
-		mav.setViewName(("uploadboard/" + vo.getProdID()));
-		System.out.print(vo.getViewContenxt());
+//		System.out.print(vo.getViewContenxt());
 		return "redirect:uploadboard/" + vo.getProdID();
 	}
 

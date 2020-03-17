@@ -679,7 +679,8 @@ hr{
 						<c:forEach var="item" items="${requestScope.list }">
 						<tr>
 							<td width="10%" style="text-align:center">${item.reViewID}</td>
-							<td onclick="location.href='/miniproject/viewReview?reViewID=${item.reViewID}&Pname=${ requestScope.prod.PName }'" width="55%">${item.viewTitle}</td>
+							<%-- <td onclick="location.href='/miniproject/viewReview?reViewID=${item.reViewID}&Pname=${ requestScope.prod.PName }'" width="55%">${item.viewTitle}</td> --%>
+							<td onclick="location.href='/miniproject/viewReview?reViewID=${item.reViewID}&prodID=${ prodID }'" width="55%">${item.viewTitle}</td>
 							<td style="text-align:center" width="15%">${item.nickName}</td>
 							<td style="text-align:center" width="20%">${item.viewDate}</td>
 						</tr>
