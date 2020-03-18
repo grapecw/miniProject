@@ -137,7 +137,7 @@ public class NotebookMenuController {
 		vo.setNickName(login.getNickName());
 		vo.setIdEmail(login.getIDEmail());
 		vo.setViewStar(ViewStar);
-//		System.out.print(vo.getViewStar());
+		System.out.print(vo.getViewStar());
 		boolean result = dao.insert(vo);
 		if (result)
 			System.out.println("성공");

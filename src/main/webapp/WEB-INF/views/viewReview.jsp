@@ -32,7 +32,7 @@
 	rel="stylesheet">
 <style type="text/css">
 .col-lg-8 p {
-	color: #808080;
+	color: #cccccc;
 	margin-top: 0.5rem;
 	margin-bottom: 0.5rem;
 	text-align: left;

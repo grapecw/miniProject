@@ -28,10 +28,15 @@
 
   // Collapse Navbar
   var navbarCollapse = function() {
+	  var loginDom = document.getElementsByClassName('login');
     if ($("#mainNav").offset().top > 100) {
       $("#mainNav").addClass("navbar-shrink");
+      $("#loginImg").attr("src", "/miniproject/resources/img/loginBlack.png");
+      $("#logoutImg").attr("src", "/miniproject/resources/img/logoutBlack.png");
     } else {
       $("#mainNav").removeClass("navbar-shrink");
+      $("#loginImg").attr("src", "/miniproject/resources/img/login.png");
+      $("#logoutImg").attr("src", "/miniproject/resources/img/logout.png");
     }
   };
   // Collapse now if page is not at top

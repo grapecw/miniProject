@@ -3,6 +3,8 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,7 +24,7 @@ public class ProductReviewDAO {
 
 	public ProdReviewVO selectOne(int id) {
 		// TODO Auto-generated method stub
-		System.out.println("Mybatis 를 사용 DB 연동-selectOne");
+		//System.out.println("Mybatis 를 사용 DB 연동-selectOne");
 
 		String statement = "resource.prodReviewMapper.selectReview";
 
@@ -37,7 +39,7 @@ public class ProductReviewDAO {
 
 	public boolean insert(ProdReviewVO vo) {
 		// TODO Auto-generated method stub
-		System.out.println("Mybatis 를 사용 DB 연동-insert ");
+		//System.out.println("Mybatis 를 사용 DB 연동-insert ");
 
 		boolean result = false;
 
@@ -53,7 +55,7 @@ public class ProductReviewDAO {
 
 	public List<ProdReviewVO> listAll(String prodID,PagingControl paging) {
 		// TODO Auto-generated method stub
-		System.out.println("Mybatis 를 사용 DB 연동-listAll ");
+		//System.out.println("Mybatis 를 사용 DB 연동-listAll ");
 
 		paging.postCnt = session.selectOne("resource.prodReviewMapper.selectReviewCount", prodID);
 		
@@ -65,29 +67,29 @@ public class ProductReviewDAO {
 		List<ProdReviewVO> list = new ArrayList<ProdReviewVO>();
 		
 		String statement = "resource.prodReviewMapper.selectReviewList";
-		System.out.println(fpage.pgNum);
+		//System.out.println(fpage.pgNum);
 		list = session.selectList(statement, fpage);
 
-		System.out.println(session.getClass().getName());
+		//System.out.println(session.getClass().getName());
 		return list;
 	}
 
 	public List<StarSelectVO> selectStar(String prodID) {
-		System.out.println("Mybatis 를 사용 DB 연동-selectStar ");
+		//System.out.println("Mybatis 를 사용 DB 연동-selectStar ");
 
 		List<StarSelectVO> list = new ArrayList<StarSelectVO>();
 		String statement = "resource.prodReviewMapper.selectReviewstar";
-		System.out.println(prodID);
+		//System.out.println(prodID);
 		list = session.selectList(statement, prodID);
 
-		System.out.println(session.getClass().getName());
+		//System.out.println(session.getClass().getName());
 		return list;
 	}
 
 	public boolean delete(int reViewID) {
 		// TODO Auto-generated method stub
 
-		System.out.println("Mybatis 를 사용 DB 연동-delete ");
+		//System.out.println("Mybatis 를 사용 DB 연동-delete ");
 		boolean result = false;
 
 		String statement = "resource.prodReviewMapper.deleteReview";
@@ -98,7 +100,7 @@ public class ProductReviewDAO {
 	}
 	
 	public boolean update(ProdReviewVO vo) {
-		System.out.println("Mybatis 를 사용 DB 연동-update ");
+		//System.out.println("Mybatis 를 사용 DB 연동-update ");
 		boolean result = false;
 
 		// sql session 객체를 만들때 true를 준다.
@@ -114,7 +116,7 @@ public class ProductReviewDAO {
 //	public boolean insert(NewsVO vo) {
 //		// TODO Auto-generated method stub
 //
-//		System.out.println("Mybatis 를 사용 DB 연동-insert ");
+//		//System.out.println("Mybatis 를 사용 DB 연동-insert ");
 //		boolean result = false;
 //
 //		// sql session 객체를 만들때 true를 준다.
@@ -130,13 +132,13 @@ public class ProductReviewDAO {
 //	
 //	
 //	public boolean update(NewsVO vo) {
-//		System.out.println("Mybatis 를 사용 DB 연동-update ");
+//		//System.out.println("Mybatis 를 사용 DB 연동-update ");
 //		boolean result = false;
 //
 //		// sql session 객체를 만들때 true를 준다.
 //		// true를 준다는 것은 자동 commit 모드가 활성화 된다.
 //
-//		System.out.println(vo.getId());
+//		//System.out.println(vo.getId());
 //		String statement = "resource.NewsMapper.updateNews";
 //		if (session.update(statement, vo) == 1)
 //			result = true;
@@ -148,7 +150,7 @@ public class ProductReviewDAO {
 //	public boolean delete(int eNo) {
 //		// TODO Auto-generated method stub
 //
-//		System.out.println("Mybatis 를 사용 DB 연동-delete ");
+//		//System.out.println("Mybatis 를 사용 DB 연동-delete ");
 //		boolean result = false;
 //
 //		// sql session 객체를 만들때 true를 준다.
@@ -165,7 +167,7 @@ public class ProductReviewDAO {
 //	
 //	public List<NewsVO> listAll(PagingControl paging) {
 //		// TODO Auto-generated method stub
-//		System.out.println("Mybatis 를 사용 DB 연동-listAll ");
+//		//System.out.println("Mybatis 를 사용 DB 연동-listAll ");
 //		
 //		paging.postCnt = session.selectOne("resource.NewsMapper.selectTotalNewsNum");
 //		
@@ -174,7 +176,7 @@ public class ProductReviewDAO {
 //		String statement = "resource.NewsMapper.selectNews";
 //		list = session.selectList(statement,paging.getPgNum());
 //
-//		System.out.println(session.getClass().getName());
+//		//System.out.println(session.getClass().getName());
 //		return list;
 //	}
 //
@@ -182,7 +184,7 @@ public class ProductReviewDAO {
 //	public NewsVO listOne(int id) {
 //		// TODO Auto-generated method stub
 //
-//		System.out.println("Mybatis 를 사용 DB 연동-listOne ");
+//		//System.out.println("Mybatis 를 사용 DB 연동-listOne ");
 //
 //		// sql session 객체를 만들때 true를 준다.
 //		// true를 준다는 것은 자동 commit 모드가 활성화 된다.
@@ -203,7 +205,7 @@ public class ProductReviewDAO {
 //		// TODO Auto-generated method stub
 //		List<NewsVO> list = null;
 //		
-//		System.out.println("Mybatis 를 사용 DB 연동-search");
+//		//System.out.println("Mybatis 를 사용 DB 연동-search");
 //
 //
 //		String statement = null;

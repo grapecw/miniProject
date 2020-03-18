@@ -25,6 +25,7 @@
 				from prodReview
 				where prodID =#{prodID})
 		where rnum between  10*#{pgNum}-9 and 10*#{pgNum}
+		order by reViewID desc
  	</select>
 
  	
