@@ -3,6 +3,8 @@ package my.spring.miniproject;
 import java.util.List;
 import java.util.Locale;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +14,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
 
 import dao.ProductDAO;
 import dao.ProductReviewDAO;
+import vo.FindReviewVO;
 import vo.PagingControl;
+import vo.ProdReviewVO;
 import vo.ProdVO;
 import vo.StarSelectVO;
 
@@ -60,9 +66,13 @@ public class NotebookBrandController {
 		
 		PagingControl paging = new PagingControl(pagenum);
 		
+		FindReviewVO fpage = new FindReviewVO();
+		fpage.setPgNum(paging.getPgNum());
+		fpage.setProdID(prodID);
+		
 		mav.addObject("prod", dao.selectOne(prodID));
 		mav.addObject("paging", paging);
-		mav.addObject("list", redao.listAll(prodID,paging));
+		mav.addObject("list", redao.listAll(prodID,fpage));
 		
 		List<StarSelectVO> alphalist = redao.selectStar(prodID);
 		
@@ -85,6 +95,26 @@ public class NotebookBrandController {
 		mav.addObject("staravg",(starsum/starcount));
 		mav.setViewName("uploadboard");
 		return mav;
+	}
+	
+	
+	
+	@RequestMapping(value = "/uploadboard/{prodID}/search" , produces = "application/json; charset=utf-8")
+	public @ResponseBody List<ProdReviewVO> selectProdStar(@RequestParam(value="pagenum", defaultValue="1")int pagenum,
+									@PathVariable String prodID,
+									int viewstar) {
+		ModelAndView mav = new ModelAndView();
+		
+		PagingControl paging = new PagingControl(pagenum);
+		
+		FindReviewVO fpage = new FindReviewVO();
+		fpage.setPgNum(paging.getPgNum());
+		fpage.setProdID(prodID);
+		fpage.setViewstar(viewstar);
+		
+		mav.addObject("prod", dao.selectOne(prodID));
+		mav.addObject("paging", paging);
+		return redao.listAll(prodID,fpage);
 	}
 	
 	private static final Logger logger = LoggerFactory.getLogger(NotebookBrandController.class);

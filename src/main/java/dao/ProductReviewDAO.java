@@ -53,20 +53,30 @@ public class ProductReviewDAO {
 		return result;
 	}
 
-	public List<ProdReviewVO> listAll(String prodID,PagingControl paging) {
+	public List<ProdReviewVO> listAll(String prodID,FindReviewVO fpage) {
 		// TODO Auto-generated method stub
 		//System.out.println("Mybatis 를 사용 DB 연동-listAll ");
 
-		paging.postCnt = session.selectOne("resource.prodReviewMapper.selectReviewCount", prodID);
+//		paging.postCnt 
+		Object count = session.selectOne("resource.prodReviewMapper.selectReviewCount", prodID);
 		
-		FindReviewVO fpage = new FindReviewVO();
-		fpage.setPgNum(paging.getPgNum());
-		fpage.setProdID(prodID);
-		fpage.setPostCnt(paging.postCnt);
+		if(count == null)
+			fpage.postCnt = 0;
+		else
+			fpage.postCnt = (Integer) count;
+		
+		
+		fpage.setPostCnt(fpage.postCnt);
 		
 		List<ProdReviewVO> list = new ArrayList<ProdReviewVO>();
 		
-		String statement = "resource.prodReviewMapper.selectReviewList";
+		String statement =  null;
+		if(fpage.viewstar==0) {
+			statement ="resource.prodReviewMapper.selectReviewList";
+		}
+		else {
+			statement = "resource.prodReviewMapper.selectReviewStarList";
+		}
 		//System.out.println(fpage.pgNum);
 		list = session.selectList(statement, fpage);
 

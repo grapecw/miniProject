@@ -1,25 +1,21 @@
 package vo;
 
 public class ReComment {
-	private int ReCommentID;
+	private int reCommentID;
 	private int reViewID;
-	private int IDCord;
-	private String NickName;
-	private String IDEmail;
-	private int IDCord2;
-	private String NickName2;
-	private String IDEmail2;
-	private String ReComment;
-	private String ReDate;
-	private int rePoice;
-	private int ReCommentID2;
-	
+	private int idCord;
+	private String nickName;
+	private int parentReCommentID;
+	private int orderGroupNo;
+	private int groupDepth;
+	private String contents;
+	private String released;
 	
 	public int getReCommentID() {
-		return ReCommentID;
+		return reCommentID;
 	}
 	public void setReCommentID(int reCommentID) {
-		ReCommentID = reCommentID;
+		this.reCommentID = reCommentID;
 	}
 	public int getReViewID() {
 		return reViewID;
@@ -27,64 +23,48 @@ public class ReComment {
 	public void setReViewID(int reViewID) {
 		this.reViewID = reViewID;
 	}
-	public int getIDCord() {
-		return IDCord;
+	public int getIdCord() {
+		return idCord;
 	}
-	public void setIDCord(int iDCord) {
-		IDCord = iDCord;
+	public void setIdCord(int idCord) {
+		this.idCord = idCord;
 	}
 	public String getNickName() {
-		return NickName;
+		return nickName;
 	}
 	public void setNickName(String nickName) {
-		NickName = nickName;
+		this.nickName = nickName;
 	}
-	public String getIDEmail() {
-		return IDEmail;
+	public int getParentReCommentID() {
+		return parentReCommentID;
 	}
-	public void setIDEmail(String iDEmail) {
-		IDEmail = iDEmail;
+	public void setParentReCommentID(int parentReCommentID) {
+		this.parentReCommentID = parentReCommentID;
 	}
-	public int getIDCord2() {
-		return IDCord2;
+	public int getOrderGroupNo() {
+		return orderGroupNo;
 	}
-	public void setIDCord2(int iDCord2) {
-		IDCord2 = iDCord2;
+	public void setOrderGroupNo(int orderGroupNo) {
+		this.orderGroupNo = orderGroupNo;
 	}
-	public String getNickName2() {
-		return NickName2;
+	public int getGroupDepth() {
+		return groupDepth;
 	}
-	public void setNickName2(String nickName2) {
-		NickName2 = nickName2;
+	public void setGroupDepth(int groupDepth) {
+		this.groupDepth = groupDepth;
 	}
-	public String getIDEmail2() {
-		return IDEmail2;
+	public String getContents() {
+		return contents;
 	}
-	public void setIDEmail2(String iDEmail2) {
-		IDEmail2 = iDEmail2;
+	public void setContents(String contents) {
+		this.contents = contents;
 	}
-	public String getReComment() {
-		return ReComment;
+	public String getReleased() {
+		return released;
 	}
-	public void setReComment(String reComment) {
-		ReComment = reComment;
+	public void setReleased(String released) {
+		this.released = released;
 	}
-	public String getReDate() {
-		return ReDate;
-	}
-	public void setReDate(String reDate) {
-		ReDate = reDate;
-	}
-	public int getRePoice() {
-		return rePoice;
-	}
-	public void setRePoice(int rePoice) {
-		this.rePoice = rePoice;
-	}
-	public int getReCommentID2() {
-		return ReCommentID2;
-	}
-	public void setReCommentID2(int reCommentID2) {
-		ReCommentID2 = reCommentID2;
-	}
+	
+	
 }

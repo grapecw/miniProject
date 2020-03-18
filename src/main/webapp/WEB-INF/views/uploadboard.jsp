@@ -670,6 +670,7 @@ hr{
 			</div>
 			<br>
 			<br>
+			<button onclick="searchStar()">star</button>
 			<div>
 				<table id="prodboard">
 					<thead>
@@ -679,7 +680,7 @@ hr{
 							<th>업로드 날짜</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody id = "reviewView">
 						<c:forEach var="item" items="${requestScope.list }">
 						<tr>
 							<td width="10%" style="text-align:center">${item.reViewID}</td>
@@ -740,5 +741,27 @@ hr{
 	<script src="<c:url value="/resources/js/lightbox.js" />"></script>
 	<script src="<c:url value="/resources/js/grayscale.js" />"></script>
 	 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" ></script>
+	 <script>
+	 
+	 	function searchStar(){
+	 		var togo = "/miniproject/uploadboard/${ requestScope.prod.prodID }/search?viewstar=1";
+	 				console.log(togo);
+			/* var replycontent = document.getElementById('comm_contents').value; */
+			/* console.log(replycontent); */
+			var xhr = new XMLHttpRequest();
+	 		xhr.onload = function(event) {
+	 			if (xhr.status == 200) {
+	 				var str = xhr.responseText;
+	 				var data = JSON.parse(str);
+	 				console.log(data);
+	 				var target = document.getElementById('replyList');
+	 				target.innerHTML = str;
+	 			}
+	 		};
+	 		xhr.open('GET', togo, true);
+	 		xhr.send();
+	 	};
+	 
+	 </script>
 </body>
 </html>

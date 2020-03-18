@@ -136,7 +136,7 @@
 		<div class="container">
 			<div class="row">
 				<div id="about" class="about-section text-center col-lg-8 mx-auto ">
-					<p style="color: white; text-align: left; margin-left: 50px;"">${ prodvo.pname }</p>
+					<p style="color: white; text-align: left; margin-left: 50px;""><a href="/miniproject/uploadboard/${prodvo.prodID }">${ prodvo.pname }</a></p>
 					<br>
 					<h2 class="text-white mb-4" style="margin: auto;">${item.viewTitle}</h2>
 					<p
@@ -168,11 +168,13 @@
 					</c:forEach>
 					<br>
 					<br>
-
+					<button onclick="location.href='/miniproject/uploadboard/${prodvo.prodID }'"> 목록 </button>
 					<c:if test="${!empty sessionScope.login}">
 						<c:if test="${sessionScope.login.IDCord == item.idCord}">
+						<span >
 						<button onclick="location.href='/miniproject/viewReview/update?reViewID=${item.reViewID }'"> 수정 </button>
 						<button onclick="location.href='/miniproject/viewReview/delete?reViewID=${item.reViewID }'"> 삭제 </button>
+						</span>
 						<%-- <table style="margin: auto;">
 						<tr>
 							<td>
@@ -188,6 +190,8 @@
 						</table> --%>
 						</c:if> 
 					</c:if>
+					
+					<br><br>
 				</div>
 			</div>
 		</div>

@@ -27,6 +27,15 @@
 		where rnum between  10*#{pgNum}-9 and 10*#{pgNum}
 		order by reViewID desc
  	</select>
+ 	
+ 	<select id="selectReviewStarList"  resultType="vo.ProdReviewVO" parameterType="vo.FindReviewVO">
+ 		select reViewID, NickName, viewTitle, to_char(ViewDate,'yyyy"년" mm"월" dd"일"') AS ViewDate, Viewcnt, ViewUpCnt, ViewStar
+        from 	(select reViewID, NickName, viewTitle, ViewDate, Viewcnt, ViewUpCnt, ViewStar, rownum rnum
+				from prodReview
+				where prodID = #{prodID} and viewstar = #{viewstar})
+		where rnum between  10*#{pgNum}-9 and 10*#{pgNum}
+		order by reViewID desc
+ 	</select>
 
  	
  	<!-- 그 물품에 대한 리뷰를 작성 하는 부분 -->
