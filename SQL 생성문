@@ -1,0 +1,113 @@
+CREATE TABLE TalkComment (
+   c_id 			number NOT NULL,
+   boardID   		number   NOT NULL,
+   id   			Number(38)   NOT NULL,
+   writer 			varchar2(30) not null,
+   writedate 		DATE,
+   content 			VARCHAR2(255) NULL
+   );
+   
+   create sequence TalkBoard_seq start with 1 increment by 1;         
+
+CREATE TABLE prod (
+PRODID        		VARCHAR2(50)  NOT NULL,
+MANUFACTURER          VARCHAR2(30)  ,
+PTYPE                 VARCHAR2(20)  ,
+PNAME                 VARCHAR2(50)  ,
+PIMG                  VARCHAR2(300) ,
+PPLAIN                VARCHAR2(300) ,
+PSPEC1                VARCHAR2(200) ,
+PSPEC2                VARCHAR2(200) ,
+PSPEC3                VARCHAR2(200) ,
+PSPEC4                VARCHAR2(200) ,
+PSPEC5                VARCHAR2(200) ,
+PSPEC6                VARCHAR2(200) ,
+PSPEC7                VARCHAR2(200) ,
+PSPEC8                VARCHAR2(200) ,
+PSPEC9                VARCHAR2(200) ,
+PSPEC10               VARCHAR2(200) ,
+PSPEC11               VARCHAR2(200) ,
+PSPEC12               VARCHAR2(200) ,
+PSPEC13               VARCHAR2(200) ,
+PSPEC14               VARCHAR2(200) ,
+PSPEC15               VARCHAR2(200) ,
+PSPEC16               VARCHAR2(200) ,
+PSPEC17               VARCHAR2(200) ,
+PSPEC18               VARCHAR2(200) ,
+PSPEC19               VARCHAR2(200) ,
+PSPEC20               VARCHAR2(200) ,
+PSPEC21               VARCHAR2(200) ,
+PSPEC22               VARCHAR2(200) ,
+RELEASED              DATE          
+);
+
+CREATE TABLE prodReview (
+REVIEWID     			NUMBER NOT NULL
+IDCORD     				NUMBER          NOT NULL 
+NICKNAME    			VARCHAR2(30)     NOT NULL
+IDEMAIL      			VARCHAR2(100)   NOT NULL
+PRODID     				VARCHAR2(50)     NOT NULL 
+VIEWTITLE             	VARCHAR2(300)  
+VIEWDATE              	DATE           
+VIEWCONTENXT          	VARCHAR2(1999) 
+VIEWCNT               	NUMBER         
+VIEWUPCNT             	NUMBER         
+VIEWIMG               	VARCHAR2(64)   
+VIEWSTAR              	NUMBER         
+VIEWPOICE             	NUMBER         
+ONELINE               	VARCHAR2(100)  
+);
+
+CREATE TABLE ReComment (
+	ReCommentID			number	NOT NULL,
+	reViewID			number	NOT NULL,
+	IDCord				Number	NOT NULL,
+	NickName			varchar(30)	NOT NULL,
+	IDEmail				varchar(100)	NOT NULL,
+	IDCord2				Number	NOT NULL,
+	NickName2			varchar(30)	NOT NULL,
+	IDEmail2			vahrchar(100)	NOT NULL,
+	ReComment			varchar(900)	NULL,
+	ReDate				date	NULL,
+	rePoice				number	NULL,
+	ReCommentID2		number	NOT NULL
+);
+
+ create sequence ReCommentID_seq start with 1 increment by 1;         
+
+CREATE TABLE ReViewRe (
+	reCommentID			number	NOT NULL,
+	reViewID			number	NOT NULL,
+	idCord				Number	NOT NULL,
+	nickName			varchar(30),
+	parentReCommentID	number,
+	orderGroupNo		Number,
+	groupDepth			number,
+	CONTENTS			varchar(400)NOT NULL,
+	RELEASED			DATE
+);
+
+insert into prod ( PRODID, MANUFACTURER, PTYPE, PNAME, PIMG, RELEASED, PPLAIN, PSPEC1, PSPEC2, PSPEC3, PSPEC4, PSPEC5, PSPEC6, PSPEC7, PSPEC8, PSPEC9, PSPEC10, PSPEC11, PSPEC12, PSPEC13)
+    VALUES ('NT950QCT-A58A', '삼성', 'Notebook', '삼성전자 갤럭시북 플렉스','NT950QCT-A58A',TO_DATE('2019/12','yyyy/mm'), '삼성 갤럭시 북 Flex <br> 또 한 번 놀라워진 S펜, 동작까지 인식하다 <br> 이젠 노트북으로도 무선 배터리 공유 <br> 차원이 다른 속도의 Wi-Fi 6',
+    '디스플레이%39.6cm(15.6 inch) / FHD 광시야각 / QLED Display(1920x1080)', '프로세서%Intel Core™ i5-1035G4 Processor(1.10GHz up to 3.70 GHz 6MB L3 Cache)', '메인메모리%8GB LPDDR4x Memory(On BD 8GB) / 1SODIMM' , '저장장치%256GB NVMe SSD / 총 SSD슬롯 : 2 / ODD : 없음', '그래픽%Intel® Iris Plus Graphics', '네트워크%Wi-Fi 6 (Gig+) 802.11 ax 2x2 / Bluetooth v5.0', '입력장치%페블 키보드 / 숫자키 / 백라이트 지원 / 터치스크린 / S펜 / 클릭패드', '입력단자%2Thunderbolt™ 3 / 1 USB-C™ / UFS - MicroSD Combo / 1헤드폰 출력-마이크 입력 콤보', '크기 및 무게%355.0x227.2x14.9 mm / 1.52kg', '기타%지문 인식 / TPM / 조도 센서 / 가속 센서 / 중력 센서', '전원%69.7Wh(Typical) / 65W USB-C™ 어댑터', '운영체제%Window 미포함(Console Linux)', '용도%사무-인강용'
+    );
+    
+insert into prod ( PRODID, MANUFACTURER, PTYPE, PNAME, PIMG, RELEASED, PPLAIN, PSPEC1, PSPEC2, PSPEC3, PSPEC4, PSPEC5, PSPEC6, PSPEC7, PSPEC8, PSPEC9, PSPEC10, PSPEC11, PSPEC12, PSPEC13)
+    VALUES ('NT950XCJ-X59', '삼성', 'Notebook', '삼성전자 갤럭시북 이온','NT950XCJ-X59',TO_DATE('2019/12','yyyy/mm'), '삼성 갤럭시 북 Ion <br> 세계 최초 QLED 노트북 <br> 무선 충전기를 품은 터치패드 <br> 차원이 다른 속도의 Wi-Fi 6',
+    '디스플레이%39.6cm(15.6 inch) / FHD 광시야각 / QLED Display(1920x1080)', '프로세서%Intel Core™ i5-10210U Processor(1.60GHz up to 4.20 GHz 6MB L3 Cache)', '메인메모리%8GB DDR4 Memory(On BD 8GB) / 1SODIMM' , '저장장치%512GB NVMe SSD / 총 SSD슬롯 : 2 / ODD : 없음', '그래픽%NVDIA® GeForce® MX250 / Graphics with GDDR5 2GB Graphics Memory', '네트워크%Wi-Fi 6 (Gig+) 802.11 ax 2x2 / Bluetooth v5.0', '입력장치%페블 키보드 / 숫자키 / 백라이트 지원 / 클릭패드', '입력단자%1HDMI / 1Thunderbolt™ 3 / 2 USB3.0 / UFS - MicroSD Combo / 1헤드폰 출력-마이크 입력 콤보 / 1DC-in', '크기 및 무게%356.1x228.0x14.9 mm / 1.26kg', '기타%지문 인식 / TPM', '전원%69.7Wh(Typical) / 65W 어댑터', '운영체제%Window 10 Home', '용도%사무-인강용 / 휴대용'
+    );
+    
+insert into prod ( PRODID, MANUFACTURER, PTYPE, PNAME, PIMG, RELEASED, PPLAIN, PSPEC1, PSPEC2, PSPEC3, PSPEC4, PSPEC5, PSPEC6, PSPEC7, PSPEC8, PSPEC9, PSPEC10, PSPEC11, PSPEC12, PSPEC13)
+    VALUES ('NT340XAZ-AD1A', '삼성', 'Notebook', '삼성전자 노트북3','NT340XAZ-AD1A',TO_DATE('2018/10','yyyy/mm'), '삼성 노트북 3 <br> 스타일리시한 모던 슬림 디자인 <br> 끊임없이 매끄러운 퍼포먼스 <br> 손가락에 꼭 맞는 커브드 키 캡',
+    '디스플레이%35.6cm(14 inch) / HD LED Display(1366x768)', '프로세서%Intel® Celeron® Processor 3865U(1.80GHz 2MB L3 Cache)', '메인메모리%4GB DDR4 Memory(4GB x 1) / 1SODIMM' , '저장장치%500GB Hard Disk Drive(5400 RPM) / ODD : 없음', '그래픽%Intel® HD Graphics 610', '네트워크%802.11 ax 1x1 / Bluetooth v4.1 / Fast Ethernet[10/100]', '입력장치%페블 키보드 / 터치패드', '포트%1HDMI / 2 USB3.0, 1USB2.0 / 헤드폰 출력-마이크 입력 콤보 / 1DC-in / 1 RJ45(랜)', '크기 및 무게%336.0x232.9x19.8 mm / 1.66kg', '기타%시큐리티 슬롯', '전원%43Wh / 40W 어댑터', '운영체제%Linux(Console only)', '용도%사무-인강용'
+    );
+    
+insert into prod ( PRODID, MANUFACTURER, PTYPE, PNAME, PIMG, RELEASED, PPLAIN, PSPEC1, PSPEC2, PSPEC3, PSPEC4, PSPEC5, PSPEC6, PSPEC7, PSPEC8, PSPEC9, PSPEC10, PSPEC11, PSPEC12, PSPEC13)
+    VALUES ('NT500R5Z-K78A', '삼성', 'Notebook', '삼성전자 노트북 5','NT500R5Z-K78A',TO_DATE('2019/12','yyyy/mm'), '삼성 노트북 5 <br> 메모리 HDD 손쉽게 업그레이드 <br> 어느 각도에서나 뛰어난 화질 <br> 화면 전환 컨설팅 모드',
+    '디스플레이%39.6cm(15.6 inch) / FHD 광시야각 / LED Display(1920x1080) / Anti-Glare', '프로세서%Intel® Core™ i7 Processor 6500U(2.50GHz up to 3.10 GHz 4MB L3 Cache)', '메인메모리%8GB DDR4 Memory(8GB x 1) / 2SODIMM' , '저장장치%256GB Solid-state drive / ODD : 없음', '그래픽%Intel® HD Graphics 520', '네트워크%802.11 ax 2x2 / Bluetooth v4.2 / Gigabit Ethernet[10/100/1000]', '입력장치%페블 키보드 / 숫자키 / 터치패드', '입력단자%1HDMI / 1 USB3.0, 2 USB2.0 / 3-in-1(SD, SDHC, SDXC) Multimedia Card Reader / 1헤드폰 출력-마이크 입력 콤보 / 1DC-in / 1RJ45(랜)', '크기 및 무게%375x248x20.85 mm / 1.86kg', '기타%시큐리티 슬롯 / 스테레오 스피커(1.5W x 2) / 내장 디지털마이크 / 웹 카메라 / SoundAlive™', '전원%43Wh / 40W-65W 어댑터(어댑터 용량은 사양에 따라 상이합니다.)', '운영체제%Window 미포함(Console Linux)', '용도%사무-인강용'
+    );
+
+insert into prod ( PRODID, MANUFACTURER, PTYPE, PNAME, PIMG, RELEASED, PPLAIN, PSPEC1, PSPEC2, PSPEC3, PSPEC4, PSPEC5, PSPEC6, PSPEC7, PSPEC8, PSPEC9, PSPEC10, PSPEC11, PSPEC12, PSPEC13)
+    VALUES ('NT950QCG-X716A', '삼성', 'Notebook', '삼성전자 갤럭시북 플렉스','NT950QCG-X716A',TO_DATE('2019/12','yyyy/mm'), '삼성 갤럭시 북 Flex <br> 볼수록 빠져드는 경이로운 화질 <br> 최첨단에 걸맞은 초고속 퍼포먼스 <br> 차원이 다른 속도의 Wi-Fi 6',
+    '디스플레이%39.6cm(15.6 inch) / FHD 광시야각 / QLED Display(1920x1080)', '프로세서%Intel Core™ i7-1065G7 Processor(1.30GHz up to 3.90 GHz 8MB L3 Cache)', '메인메모리%16GB DDR4 Memory(On BD 16GB)' , '저장장치%512GB NVMe SSD / 총 SSD슬롯 : 1 / ODD : 없음', '그래픽%NVDIA® GeForce® MX250 / Graphics with GDDR5 2GB Graphics Memory', '네트워크%Wi-Fi 6 (Gig+) 802.11 ax 2x2 / Bluetooth v5.0', '입력장치%페블 키보드 / 숫자키 / 백라이트 지원 / 터치스크린 / S펜 / 클릭패드', '입력단자%2Thunderbolt™ 3 / 1 USB-C™ / UFS - MicroSD Combo / 1헤드폰 출력-마이크 입력 콤보', '크기 및 무게%355.0x227.2x14.9 mm / 1.57kg', '기타%지문 인식 / TPM / 조도 센서 / 가속 센서 / 중력 센서', '전원%69.7Wh(Typical) / 65W USB-C™ 어댑터', '운영체제%Window 10 Home', '용도%사무-인강용 / 그래픽작업용'
+    );
