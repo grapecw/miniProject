@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="vo.ProdReviewVO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -347,30 +347,31 @@ body {
 			<div id="form-main" class="row">
 				<div id="form-div about" class="about-section col-lg-8 mx-auto "
 					style="padding-top: 50px; margin: auto">
-					<form method="post" action="/miniproject/write1"
+					<form method="post" action="/miniproject/viewReview/updatetwo"
 						id="summernote_item" style = "margin-bottom: 1em; font-size: 1.25rem;">
 						 <input name="viewTitle" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" 
-						 placeholder="제목" required/>
+						 placeholder="제목" value="${ item.viewTitle} " required/>
+						
 			<!-- 			<input type="제목" name="viewTitle" class="form-control"
 							id="subject" placeholder="제목" required /> <br> -->
-						<textarea id="summernote" name="ViewContenxt"></textarea>
+						<textarea id="summernote" name="ViewContenxt">${ item.viewContenxt}</textarea>
 						<br>
-						<!-- <input name="oneline" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" 
-						 placeholder="한줄 평" required/> -->
+						<input name="oneline" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" 
+						 placeholder="한줄 평" value="${ item.oneline} " required/>
 						<div class="rating" style="max-width: 115px;">
-							<input type="radio" name="ViewStar" value=5 id="r5"> 
+							<input type="radio" name="ViewStar" value=5 id="r5" class = "star"> 
 							<label for="r5"></label>
-							<input type="radio" name="ViewStar" value=4 id="r4">
+							<input type="radio" name="ViewStar" value=4 id="r4" class = "star">
 							<label for="r4"></label> 
-							<input type="radio" name="ViewStar" value=3 id="r3"> 
+							<input type="radio" name="ViewStar" value=3 id="r3" class = "star"> 
 							<label for="r3"></label>
-							<input type="radio" name="ViewStar" value=2 id="r2"> 
+							<input type="radio" name="ViewStar" value=2 id="r2" class = "star"> 
 							<label for="r2"></label> 
-							<input type="radio" name="ViewStar" value=1 id="r1"> 
+							<input type="radio" name="ViewStar" value=1 id="r1" class = "star"> 
 							<label for="r1"></label> 
-
 						</div>
-						<input type="hidden" name="prodID" value="${ requestScope.prodID }">
+						<input type="hidden" name="reViewID" value=" ${ item.reViewID}">
+						<input type="hidden" name="prodID" value="${ item.prodID }">
 						<br>
 						<br>
 						<br>
@@ -384,6 +385,10 @@ body {
 	</section>
 
 	<script>
+	
+		var stardom = document.querySelectorAll(".star");
+		stardom[5-${ item.viewStar}].setAttribute('checked','true');
+		
 		function goWrite(frm) {
 			var title = frm.viewTitle.value;
 			var content = frm.ViewContenxt.value;

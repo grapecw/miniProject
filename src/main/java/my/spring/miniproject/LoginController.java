@@ -14,7 +14,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 
 import bo.NaverLoginBO;
+import service.KakaoAPI;
 import vo.LoginVO;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+ 
+
 
 /**
  * Handles requests for the application home page.
@@ -60,7 +69,7 @@ public class LoginController {
 		JSONParser parser = new JSONParser();
 		Object obj = parser.parse(apiResult);
 		JSONObject jsonObj = (JSONObject) obj;
-		
+
 //3. 데이터 파싱
 //Top레벨 단계 _response 파싱
 		JSONObject response_obj = (JSONObject) jsonObj.get("response");
@@ -68,14 +77,14 @@ public class LoginController {
 		String nickname = (String) response_obj.get("nickname");
 //4.파싱 닉네임 세션으로 저장
 		LoginVO login = new LoginVO();
-		
+
 		login.setIDCord(Integer.parseInt(((String) response_obj.get("id"))));
-		login.setIDEmail( (String) response_obj.get("email"));
-		login.setNickName( (String) response_obj.get("nickname"));
+		login.setIDEmail((String) response_obj.get("email"));
+		login.setNickName((String) response_obj.get("nickname"));
 		login.setSex((String) response_obj.get("gender"));
-		
-		System.out.print(login.getNickName()+login.getIDEmail()+login.getIDCord()+login.getSex());
-		
+
+		System.out.print(login.getNickName() + login.getIDEmail() + login.getIDCord() + login.getSex());
+
 		session.setAttribute("login", login); // 세션 생성
 //		System.out.print("111111:"+session.getAttribute("sessionId"));
 		model.addAttribute("result", apiResult);
@@ -86,9 +95,26 @@ public class LoginController {
 //로그아웃
 	@RequestMapping(value = "/logout", method = { RequestMethod.GET, RequestMethod.POST })
 	public String logout(HttpSession session) throws IOException {
-		System.out.print("22222:"+session.getAttribute("sessionId"));
+		System.out.print("22222:" + session.getAttribute("sessionId"));
 		System.out.println("여기는 logout");
 		session.invalidate();
 		return "redirect:/";
 	}
+	
+	 @Autowired
+	    private KakaoAPI kakao;
+	    
+	    @RequestMapping(value="/")
+	    public String index() {
+	        
+	        return "index";
+	    }
+	    
+	    @RequestMapping(value="/login")
+	    public String login(@RequestParam("code") String code) {
+	        String access_Token = kakao.getAccessToken(code);
+	        System.out.println("controller access_token : " + access_Token);
+	        
+	        return "index";
+	    }
 }

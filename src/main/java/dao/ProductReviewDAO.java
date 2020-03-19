@@ -71,6 +71,7 @@ public class ProductReviewDAO {
 		List<ProdReviewVO> list = new ArrayList<ProdReviewVO>();
 		
 		String statement =  null;
+//		System.out.print(fpage.viewstar);
 		if(fpage.viewstar==0) {
 			statement ="resource.prodReviewMapper.selectReviewList";
 		}

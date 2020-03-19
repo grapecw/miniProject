@@ -448,7 +448,7 @@ hr{
 			
 			<%= posting.getViewTitle() %>
 			--%>
-  				<p> ${ requestScope.prod.pname } </p>
+  				<p style="font-weight: bold;"> ${ requestScope.prod.pname } </p>
 			<hr class="trans--grow hr2">
 <%-- 			<hr>
 			 <p style="color:wheat;font-size:55px;text-align:Left; margin-left:50px;">${ requestScope.prod.PName }</p>
@@ -616,7 +616,7 @@ hr{
           <i class="active icon-star"></i> 5           </span>
         <span class="bar-block">
           <span id="bar-five" class="bar">
-            <span>${ starlist[4] }</span>&nbsp;
+            <span>  ${ starlist[4] }</span>&nbsp;
           </span> 
         </span>
       </div>
@@ -626,7 +626,7 @@ hr{
           <i class="active icon-star"></i> 4           </span>
         <span class="bar-block">
           <span id="bar-four" class="bar">
-            <span>${ starlist[3] }</span>&nbsp;
+            <span>  ${ starlist[3] }</span>&nbsp;
           </span> 
         </span>
       </div> 
@@ -636,7 +636,7 @@ hr{
           <i class="active icon-star"></i> 3           </span>
         <span class="bar-block">
           <span id="bar-three" class="bar">
-            <span>${ starlist[2] }</span>&nbsp;
+            <span>  ${ starlist[2] }</span>&nbsp;
           </span> 
         </span>
       </div>
@@ -646,7 +646,7 @@ hr{
           <i class="active icon-star"></i> 2           </span>
         <span class="bar-block">
           <span id="bar-two" class="bar">
-            <span>${ starlist[1] }</span>&nbsp;
+            <span>  ${ starlist[1] }</span>&nbsp;
           </span> 
         </span>
       </div>
@@ -656,7 +656,7 @@ hr{
           <i class="active icon-star"></i> 1           </span>
         <span class="bar-block">
           <span id="bar-one" class="bar">
-            <span>${ starlist[0] }</span>&nbsp;
+              <span>  ${ starlist[0] }</span>&nbsp;
           </span> 
         </span>
       </div>
@@ -670,7 +670,7 @@ hr{
 			</div>
 			<br>
 			<br>
-			<button onclick="searchStar()">star</button>
+<!-- 			<button onclick="searchStar()">star</button> -->
 			<div>
 				<table id="prodboard">
 					<thead>
@@ -692,11 +692,11 @@ hr{
 						</c:forEach>
 					</tbody>
 				</table>
+				
 				<div class="paging">
 					<%
 						PagingControl paging = (PagingControl)request.getAttribute("paging");
 					%>
-	
 					<% if(paging.isPreData( )) { %>
 						<span onclick="location.href='/miniproject/uploadboard/${ requestScope.prod.prodID }?pagenum=<%=paging.getPageStart( ) - 1%>'">◀</span>
 					<%} %>
@@ -709,6 +709,16 @@ hr{
 						<span onclick="location.href='/miniproject/uploadboard/${ requestScope.prod.prodID }?pagenum=<%=paging.getPageEnd( )+1%>'">▶</span>
 					<%} %>
 				</div>
+				
+				<select id="star" onchange="searchStar(this.value)">
+						<option value="0">모든 별점 찾기</option>
+						<option value="5">최고 : ★★★★★  ( ${ starlist[4] } )</option>
+						<option value="4">좋음 : ★★★★☆ ( ${ starlist[3] } )</option>
+						<option value="3">괜찮 : ★★★☆☆ ( ${ starlist[2] } )</option>
+						<option value="2">별로 : ★★☆☆☆ ( ${ starlist[1] } )</option>
+						<option value="1">나쁨 : ★☆☆☆☆  ( ${ starlist[0] } )</option>
+		    		</select> 
+				
 				<c:if test="${!empty sessionScope.login}">
 				<form method = "get" action = "/miniproject/write" id="colwrite" style= "margin-top: 30px;">
 					<input type="hidden" name="prodID" value="${ requestScope.prod.prodID }">
@@ -743,19 +753,31 @@ hr{
 	 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" ></script>
 	 <script>
 	 
-	 	function searchStar(){
-	 		var togo = "/miniproject/uploadboard/${ requestScope.prod.prodID }/search?viewstar=1";
-	 				console.log(togo);
-			/* var replycontent = document.getElementById('comm_contents').value; */
+	 	function searchStar(e){
+	 		var togo = null;
+	 		togo = "/miniproject/uploadboard/${ requestScope.prod.prodID }/search?viewstar="+e;
+	 		
+	 		/* console.log(e); */
+			var replycontent = document.getElementById('reviewView')
 			/* console.log(replycontent); */
 			var xhr = new XMLHttpRequest();
 	 		xhr.onload = function(event) {
 	 			if (xhr.status == 200) {
 	 				var str = xhr.responseText;
 	 				var data = JSON.parse(str);
-	 				console.log(data);
-	 				var target = document.getElementById('replyList');
-	 				target.innerHTML = str;
+	 				/* console.log(data.length); */
+	 				replycontent.innerHTML="";
+					for (var i =0 ;i < data.length; i++) {
+						/* console.log(data[i]); */
+						replycontent.innerHTML += "<tr>" +
+												"<td width='10%' style='text-align:center'>" + data[i].reViewID + "</td>" +
+												"<td onclick=\"location.href='/miniproject/viewReview?reViewID="+data[i].reViewID+"&prodID=${ prodID }'\" width='55%''>"+ data[i].viewTitle+"</td>" +
+												"<td style=\"text-align:center\" width=\"15%\">"+data[i].nickName+"</td>"+
+												"<td style=\"text-align:center\" width=\"20%\">"+data[i].viewDate+"</td>"+
+												"</tr>"
+					}
+	 				/* var target = document.getElementById('replyList');
+	 				target.innerHTML = str; */
 	 			}
 	 		};
 	 		xhr.open('GET', togo, true);

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="resource.TalkMapper">
+
+	<select id="selectMaxCountTalk"  resultType="int">
+ 		select max(rownum)
+		from TalkBoard;
+ 	</select>
+	
+ 	<select id="selectTalk"  resultType="vo.TalkVO" parameterType="_int">
+ 		select id, writer, title, content, cnt, to_char(writedate,'yyyy"년" mm"월" dd"일"') AS "writedate"
+		from (select id, writer, title, content, writedate, cnt ,rownum rnum from TalkBoard order by writedate) 
+		where rnum between 10*#{pagenum}-9 and 10*#{pagenum}
+		order by rnum desc
+ 	</select>
+ 	
+ 	<select id="selectOneTalk" resultType="vo.TalkVO" parameterType="_int" >
+ 		select id, writer, title, content, to_char(writedate,'yyyy"년" mm"월" dd"일"') AS "writedate", cnt 
+ 		from TalkBoard where id = #{id}
+	</select>
+	
+  	<insert id="insertTalk" parameterType="vo.TalkVO">
+		<selectKey resultType="int" keyProperty="id" order="BEFORE">
+			select TalkBoard_seq.nextval from dual
+ 		</selectKey>
+		insert into TalkBoard values (#{id}, #{writer}, #{title}, #{content}, sysdate, 0)
+	</insert>
+	
+	<select id="searchTitleTalk" parameterType="string" resultType= "vo.TalkVO">
+    	select id, writer, title, content, to_char(writedate,'yyyy"년" mm"월" dd"일"') AS "writedate", cnt
+		from TalkBoard
+    	where title like '%'||#{key}||'%'
+    	order by id desc
+    </select>
+    
+    <select id="searchWriterTalk" parameterType="string" resultType= "vo.TalkVO">
+    	select id, writer, title, content, to_char(writedate,'yyyy"년" mm"월" dd"일"') AS "writedate", cnt
+		from TalkBoard
+    	where writer like '%'||#{key}||'%'
+    	order by id desc
+    </select>
+    
+    <select id="searchContentTalk" parameterType="string" resultType= "vo.TalkVO">
+    	select id, writer, title, content, to_char(writedate,'yyyy"년" mm"월" dd"일"') AS "writedate", cnt
+		from TalkBoard
+    	where content like '%'||#{key}||'%'
+    	order by id desc
+    </select>
+    
+    <delete id="deleteTalk" parameterType="_int" >
+ 		delete from TalkBoard where id = #{id}
+	</delete>
+	
+	<update id="updateTalk" parameterType="vo.TalkVO" >
+		update TalkBoard
+		set writer = #{writer}, title = #{title}, content = #{content}, writedate = sysdate
+		where id = #{id}
+	</update>
+	
+	<update id="updateViews" parameterType="_int">
+		update TalkBoard set cnt = cnt + 1 where id = #{id}
+	</update>
+	
+	<select id="selectTotalTalkNum" resultType="Integer">
+ 		SELECT count(id) from TalkBoard
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+

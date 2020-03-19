@@ -70,10 +70,11 @@ public class NotebookBrandController {
 		fpage.setPgNum(paging.getPgNum());
 		fpage.setProdID(prodID);
 		
+		
 		mav.addObject("prod", dao.selectOne(prodID));
 		mav.addObject("paging", paging);
 		mav.addObject("list", redao.listAll(prodID,fpage));
-		
+		paging.postCnt=fpage.postCnt;
 		List<StarSelectVO> alphalist = redao.selectStar(prodID);
 		
 		int[] starlist = {0,0,0,0,0};
@@ -114,7 +115,9 @@ public class NotebookBrandController {
 		
 		mav.addObject("prod", dao.selectOne(prodID));
 		mav.addObject("paging", paging);
-		return redao.listAll(prodID,fpage);
+		List<ProdReviewVO> result = redao.listAll(prodID,fpage);
+		paging.postCnt=fpage.postCnt;
+		return result;
 	}
 	
 	private static final Logger logger = LoggerFactory.getLogger(NotebookBrandController.class);

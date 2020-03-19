@@ -7,7 +7,8 @@
 <title>NAVER LOGIN TEST</title>
 </head>
 <body>
-	<h1>Login Form</h1>
+<br><br>
+	<img src="/miniproject/resources/img/logosample3.png" style="width:400px; height:200px;margin: auto;">
 	<hr>
 	<br>
 	<center>
@@ -19,12 +20,6 @@
 					window.opener.location.reload();
 					window.close();
 				</script>
-				<!-- <script>
-					setTimeout(function() {
-						window.opener.location.reload();
-						self.close(); //현재창 닫기
-					}, 2000); // 2초후 실행 1000당 1초
-				</script> -->
 			</c:when>
 			<c:otherwise>
 				<br>
@@ -38,7 +33,6 @@
 			</c:otherwise>
 		</c:choose>
 	</center>
-
 	<!-- 
 	<script type="text/javascript">
 		window.opener.location.reload();
